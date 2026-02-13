@@ -1,0 +1,287 @@
+[
+    {
+        "id": 1,
+        "name": "Wireless Noise-Cancelling Headphones",
+        "slug": "wireless-noise-cancelling-headphones",
+        "description": "Premium over-ear headphones with industry-leading noise cancellation and 30-hour battery life.",
+        "longDescription": "Experience audio perfection with our flagship wireless headphones. Featuring advanced adaptive noise cancellation that intelligently adjusts to your environment, these headphones deliver studio-quality sound with deep bass and crystal-clear highs. The plush memory foam ear cushions and lightweight design ensure all-day comfort, while the 30-hour battery life keeps the music going. With multipoint connection, seamlessly switch between your devices without missing a beat.",
+        "price": 349.99,
+        "originalPrice": 449.99,
+        "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&h=600&fit=crop",
+        "category": "Audio",
+        "rating": 4.8,
+        "reviewCount": 2341,
+        "inStock": true,
+        "tags": [
+            "bestseller",
+            "new"
+        ],
+        "features": [
+            "Active Noise Cancellation",
+            "30-Hour Battery",
+            "Bluetooth 5.3",
+            "Multipoint Connection",
+            "Hi-Res Audio"
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Ultra-Slim Laptop Stand",
+        "slug": "ultra-slim-laptop-stand",
+        "description": "Ergonomic aluminum laptop stand with adjustable height and angle for optimal comfort.",
+        "longDescription": "Transform your workspace with our ultra-slim, CNC-machined aluminum laptop stand. Designed for professionals who value ergonomics and aesthetics, this stand elevates your laptop to eye level, reducing neck and back strain. The open-air design improves airflow for better cooling performance, while the silicone pads protect your laptop from scratches. Folds flat for easy portability — take your ergonomic setup anywhere.",
+        "price": 79.99,
+        "originalPrice": 99.99,
+        "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600&h=600&fit=crop",
+        "category": "Accessories",
+        "rating": 4.6,
+        "reviewCount": 876,
+        "inStock": true,
+        "tags": [
+            "popular"
+        ],
+        "features": [
+            "CNC Aluminum",
+            "Adjustable Height",
+            "Foldable Design",
+            "Anti-Slip Pads",
+            "Universal Compatibility"
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Mechanical Gaming Keyboard",
+        "slug": "mechanical-gaming-keyboard",
+        "description": "RGB mechanical keyboard with hot-swappable switches and premium PBT keycaps.",
+        "longDescription": "Dominate your games and supercharge your productivity with our mechanical gaming keyboard. Featuring hot-swappable switches, you can customize your typing experience without soldering. The per-key RGB lighting with 16.8 million colors creates stunning visual effects, while the double-shot PBT keycaps resist shine and wear. The aircraft-grade aluminum frame provides a solid, stable typing platform that will last for years.",
+        "price": 159.99,
+        "image": "https://images.unsplash.com/photo-1541140532154-b024d705b90a?w=600&h=600&fit=crop",
+        "category": "Peripherals",
+        "rating": 4.7,
+        "reviewCount": 1543,
+        "inStock": true,
+        "tags": [
+            "bestseller"
+        ],
+        "features": [
+            "Hot-Swappable Switches",
+            "Per-Key RGB",
+            "PBT Keycaps",
+            "Aluminum Frame",
+            "N-Key Rollover"
+        ]
+    },
+    {
+        "id": 4,
+        "name": "4K Ultra HD Webcam",
+        "slug": "4k-ultra-hd-webcam",
+        "description": "Professional-grade 4K webcam with AI-powered auto-framing and noise-reducing microphone.",
+        "longDescription": "Look your best on every video call with our professional 4K Ultra HD webcam. The AI-powered auto-framing keeps you centered in the shot, even as you move around. The advanced low-light correction ensures you look great in any lighting condition. Built-in dual noise-reducing microphones capture your voice with crystal clarity while filtering out background noise. Perfect for remote work, streaming, and content creation.",
+        "price": 199.99,
+        "originalPrice": 249.99,
+        "image": "https://images.unsplash.com/photo-1587826080692-f439cd0b70da?w=600&h=600&fit=crop",
+        "category": "Peripherals",
+        "rating": 4.5,
+        "reviewCount": 654,
+        "inStock": true,
+        "tags": [
+            "new"
+        ],
+        "features": [
+            "4K Resolution",
+            "AI Auto-Framing",
+            "Low-Light Correction",
+            "Dual Microphones",
+            "USB-C"
+        ]
+    },
+    {
+        "id": 5,
+        "name": "Smart Home Speaker",
+        "slug": "smart-home-speaker",
+        "description": "Premium smart speaker with spatial audio, voice assistant, and smart home hub functionality.",
+        "longDescription": "Fill your room with rich, immersive sound from our premium smart home speaker. The custom-designed driver array delivers spatial audio that adapts to your room's acoustics, creating a 360-degree soundstage. With built-in voice assistant, control your music, smart home devices, and daily tasks hands-free. The elegant fabric and metal design blends seamlessly into any interior, while the touch-sensitive top provides intuitive controls.",
+        "price": 299.99,
+        "image": "https://images.unsplash.com/photo-1543512214-318c7553f230?w=600&h=600&fit=crop",
+        "category": "Audio",
+        "rating": 4.4,
+        "reviewCount": 1023,
+        "inStock": true,
+        "tags": [
+            "popular"
+        ],
+        "features": [
+            "Spatial Audio",
+            "Voice Assistant",
+            "Smart Home Hub",
+            "Room Adaptation",
+            "Touch Controls"
+        ]
+    },
+    {
+        "id": 6,
+        "name": "Portable SSD 2TB",
+        "slug": "portable-ssd-2tb",
+        "description": "Ultra-fast portable SSD with 2TB capacity, USB-C, and military-grade durability.",
+        "longDescription": "Never worry about storage again with our ultra-fast 2TB portable SSD. With read speeds up to 2,000 MB/s, transfer a full HD movie in seconds. The rugged, IP65-rated enclosure withstands drops, dust, and water, making it the perfect companion for on-the-go professionals and creatives. The compact, palm-sized design slips easily into your pocket, while the included USB-C and USB-A cables ensure compatibility with all your devices.",
+        "price": 189.99,
+        "originalPrice": 229.99,
+        "image": "https://images.unsplash.com/photo-1531492746076-161ca9bcad58?w=600&h=600&fit=crop",
+        "category": "Storage",
+        "rating": 4.9,
+        "reviewCount": 3210,
+        "inStock": true,
+        "tags": [
+            "bestseller",
+            "popular"
+        ],
+        "features": [
+            "2TB Capacity",
+            "2,000 MB/s Read",
+            "IP65 Rated",
+            "USB-C & USB-A",
+            "256-bit Encryption"
+        ]
+    },
+    {
+        "id": 7,
+        "name": "Ergonomic Wireless Mouse",
+        "slug": "ergonomic-wireless-mouse",
+        "description": "Vertical ergonomic mouse with precision sensor and customizable buttons.",
+        "longDescription": "Say goodbye to wrist strain with our ergonomic vertical wireless mouse. The natural handshake position reduces forearm and wrist pronation, preventing repetitive strain injuries. The precision 26,000 DPI sensor delivers pixel-perfect accuracy on any surface, while 6 customizable buttons streamline your workflow. Connect via Bluetooth or the included USB receiver, and enjoy up to 70 days of battery life on a single charge.",
+        "price": 69.99,
+        "image": "https://images.unsplash.com/photo-1527864550417-7fd91fc51a46?w=600&h=600&fit=crop",
+        "category": "Peripherals",
+        "rating": 4.3,
+        "reviewCount": 445,
+        "inStock": true,
+        "tags": [],
+        "features": [
+            "Vertical Design",
+            "26,000 DPI",
+            "6 Buttons",
+            "70-Day Battery",
+            "Dual Connectivity"
+        ]
+    },
+    {
+        "id": 8,
+        "name": "Curved Gaming Monitor 34\"",
+        "slug": "curved-gaming-monitor-34",
+        "description": "Ultra-wide 34\" curved monitor with 165Hz refresh rate and 1ms response time.",
+        "longDescription": "Immerse yourself in the action with our stunning 34-inch curved ultra-wide gaming monitor. The 3440x1440 WQHD resolution and 1500R curve envelope you in breathtaking visuals, while the 165Hz refresh rate and 1ms response time ensure silky-smooth gameplay. Quantum Dot technology delivers 98% DCI-P3 color accuracy for vivid, true-to-life colors. With AMD FreeSync Premium Pro and NVIDIA G-Sync compatibility, say goodbye to tearing and stuttering forever.",
+        "price": 599.99,
+        "originalPrice": 749.99,
+        "image": "https://images.unsplash.com/photo-1527443224154-c4a3942d3acf?w=600&h=600&fit=crop",
+        "category": "Monitors",
+        "rating": 4.7,
+        "reviewCount": 1876,
+        "inStock": true,
+        "tags": [
+            "bestseller",
+            "new"
+        ],
+        "features": [
+            "34\" Ultra-Wide",
+            "165Hz / 1ms",
+            "Quantum Dot",
+            "FreeSync Premium Pro",
+            "USB-C Hub"
+        ]
+    },
+    {
+        "id": 9,
+        "name": "USB-C Docking Station",
+        "slug": "usb-c-docking-station",
+        "description": "16-in-1 USB-C dock with dual 4K display support and 100W power delivery.",
+        "longDescription": "Simplify your workspace with our all-in-one USB-C docking station. One cable connects your laptop to dual 4K displays, Gigabit Ethernet, and up to 13 peripherals simultaneously. The 100W power delivery charges even the most demanding laptops while you work. Built with premium aluminum housing for superior heat dissipation, this dock is designed for reliability and longevity. Compatible with all USB-C and Thunderbolt laptops.",
+        "price": 129.99,
+        "image": "https://images.unsplash.com/photo-1625842268584-8f3296236761?w=600&h=600&fit=crop",
+        "category": "Accessories",
+        "rating": 4.5,
+        "reviewCount": 932,
+        "inStock": false,
+        "tags": [
+            "popular"
+        ],
+        "features": [
+            "16 Ports",
+            "Dual 4K Output",
+            "100W PD",
+            "Gigabit Ethernet",
+            "SD Card Reader"
+        ]
+    },
+    {
+        "id": 10,
+        "name": "Smart Fitness Watch",
+        "slug": "smart-fitness-watch",
+        "description": "Advanced fitness watch with AMOLED display, GPS, and 14-day battery life.",
+        "longDescription": "Track your fitness journey with precision using our smart fitness watch. The vibrant 1.43\" AMOLED always-on display is easily readable in any light, while the built-in GPS accurately maps your outdoor activities. Monitor over 150 sport modes, continuous heart rate, SpO2, stress levels, and sleep quality. With 14-day battery life, charge it less and focus more on achieving your goals. Water-resistant to 50 meters for swim tracking.",
+        "price": 249.99,
+        "originalPrice": 299.99,
+        "image": "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&h=600&fit=crop",
+        "category": "Wearables",
+        "rating": 4.6,
+        "reviewCount": 2105,
+        "inStock": true,
+        "tags": [
+            "bestseller"
+        ],
+        "features": [
+            "AMOLED Display",
+            "Built-in GPS",
+            "14-Day Battery",
+            "150+ Sport Modes",
+            "5ATM Water Resistant"
+        ]
+    },
+    {
+        "id": 11,
+        "name": "Wireless Charging Pad",
+        "slug": "wireless-charging-pad",
+        "description": "Premium 3-in-1 wireless charger for phone, watch, and earbuds with fast charging.",
+        "longDescription": "Declutter your nightstand with our elegant 3-in-1 wireless charging pad. Simultaneously charge your smartphone, smartwatch, and wireless earbuds at maximum speed. The premium vegan leather surface and zinc-alloy base exude sophistication, while the intelligent charging IC prevents overcharging. LED indicators show charging status at a glance, with a night mode that dims automatically. Compatible with all Qi-enabled devices.",
+        "price": 59.99,
+        "image": "https://images.unsplash.com/photo-1586953208270-767889fa9b56?w=600&h=600&fit=crop",
+        "category": "Accessories",
+        "rating": 4.4,
+        "reviewCount": 723,
+        "inStock": true,
+        "tags": [
+            "new"
+        ],
+        "features": [
+            "3-in-1 Charging",
+            "15W Fast Charge",
+            "Vegan Leather",
+            "Night Mode",
+            "Overcharge Protection"
+        ]
+    },
+    {
+        "id": 12,
+        "name": "Professional Studio Microphone",
+        "slug": "professional-studio-microphone",
+        "description": "Condenser USB microphone with studio-quality sound for streaming and podcasting.",
+        "longDescription": "Capture broadcast-quality audio with our professional studio microphone. The large 25mm condenser capsule delivers warm, detailed sound that rivals microphones costing three times as much. Four selectable polar patterns (cardioid, omnidirectional, bidirectional, stereo) adapt to any recording scenario. The built-in headphone jack provides zero-latency monitoring, while the gain control, mute button, and LED indicators put you in full command of your audio.",
+        "price": 169.99,
+        "originalPrice": 219.99,
+        "image": "https://images.unsplash.com/photo-1590602847861-f357a9332bbc?w=600&h=600&fit=crop",
+        "category": "Audio",
+        "rating": 4.7,
+        "reviewCount": 1456,
+        "inStock": true,
+        "tags": [
+            "popular",
+            "bestseller"
+        ],
+        "features": [
+            "25mm Condenser",
+            "4 Polar Patterns",
+            "Zero-Latency Monitor",
+            "USB-C Connection",
+            "Built-in Controls"
+        ]
+    }
+]
