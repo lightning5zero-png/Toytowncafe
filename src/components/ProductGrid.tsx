@@ -99,7 +99,7 @@ export default function ProductGrid({
                                     สินค้าโปรโมชั่น
                                 </h2>
                             </div>
-                            <Link href="/deals" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300 hover:text-slate-900 transition-colors flex items-center gap-2 group">
+                            <Link href="/deals" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-500 hover:text-blue-600 bg-slate-50 hover:bg-blue-50 px-4 py-2 rounded-full transition-all flex items-center gap-2 group border border-slate-100">
                                 ดูดีลทั้งหมด
                                 <span className="group-hover:translate-x-1 transition-transform">→</span>
                             </Link>
@@ -132,8 +132,8 @@ export default function ProductGrid({
                                                     <span className="px-2 py-0.5 bg-red-500 text-[10px] font-black text-white uppercase tracking-widest rounded-full mb-4">Hot Deal</span>
                                                     <h3 className="text-xl md:text-4xl font-black text-white tracking-tighter leading-none mb-4">{bentoItems[0].name}</h3>
                                                     <div className="flex items-end gap-3">
-                                                        <span className="text-2xl md:text-5xl font-black text-white">{bentoItems[0].price.toLocaleString()}.-</span>
-                                                        <span className="text-sm md:text-xl font-bold text-white/40 line-through mb-1">{bentoItems[0].originalPrice?.toLocaleString()}.-</span>
+                                                        <span className="text-2xl md:text-5xl font-black text-white">฿{(bentoItems[0].price * 35).toLocaleString()}</span>
+                                                        <span className="text-sm md:text-xl font-bold text-white/40 line-through mb-1">฿{(bentoItems[0].originalPrice! * 35).toLocaleString()}</span>
                                                     </div>
                                                 </div>
                                             </Link>
@@ -157,8 +157,8 @@ export default function ProductGrid({
                                                         <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
                                                             <h3 className="text-[12px] md:text-sm font-black text-white uppercase tracking-tighter leading-tight mb-2 line-clamp-1">{bentoItems[idx].name}</h3>
                                                             <div className="flex items-center gap-2">
-                                                                <span className="text-sm md:text-lg font-black text-white">{bentoItems[idx].price.toLocaleString()}.-</span>
-                                                                <span className="text-[10px] md:text-xs font-bold text-white/40 line-through">{bentoItems[idx].originalPrice?.toLocaleString()}</span>
+                                                                <span className="text-sm md:text-lg font-black text-white">฿{(bentoItems[idx].price * 35).toLocaleString()}</span>
+                                                                <span className="text-[10px] md:text-xs font-bold text-white/40 line-through">฿{(bentoItems[idx].originalPrice! * 35).toLocaleString()}</span>
                                                             </div>
                                                         </div>
                                                     </Link>
@@ -185,8 +185,8 @@ export default function ProductGrid({
                                                     <div className="absolute inset-0 flex flex-col justify-end p-6 z-10">
                                                         <p className="text-[10px] font-black text-white uppercase tracking-tighter truncate mb-2">{bentoItems[idx].name}</p>
                                                         <div className="flex items-center gap-2">
-                                                            <span className="text-sm font-black text-white">{bentoItems[idx].price.toLocaleString()}.-</span>
-                                                            <span className="text-[10px] font-bold text-white/40 line-through">{bentoItems[idx].originalPrice?.toLocaleString()}</span>
+                                                            <span className="text-sm font-black text-white">฿{(bentoItems[idx].price * 35).toLocaleString()}</span>
+                                                            <span className="text-[10px] font-bold text-white/40 line-through">฿{(bentoItems[idx].originalPrice! * 35).toLocaleString()}</span>
                                                         </div>
                                                     </div>
                                                 </Link>

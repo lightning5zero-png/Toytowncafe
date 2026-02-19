@@ -17,25 +17,36 @@ export default function ProductCard({ product }: ProductCardProps) {
 
     return (
         <article className="group h-full bg-white rounded-2xl border border-slate-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex flex-col">
-            {/* Product Image */}
-            <Link href={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden rounded-t-2xl bg-slate-50">
+            {/* Product Image Container: Full Frame with Image Swap on Hover */}
+            <Link href={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden rounded-t-2xl bg-[#F8FAFC]">
+                {/* Primary Image (Full Frame) */}
                 <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-all duration-500"
+                    className="absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] group-hover:scale-110 group-hover:opacity-0"
                 />
+
+                {/* Secondary Image (Visible on Hover) - Uses second image from array or primary as fallback */}
+                <img
+                    src={(product.images && product.images.length > 1) ? product.images[1] : product.image}
+                    alt={`${product.name} alternate`}
+                    className="absolute inset-0 w-full h-full object-cover opacity-0 scale-125 transition-all duration-[1200ms] group-hover:opacity-100 group-hover:scale-100"
+                />
+
+                {/* Subtle Bottom Overlay for better text readability and "Depth" */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
 
                 {/* Discount Badge */}
                 {discount > 0 && (
-                    <div className="absolute top-3 left-3 bg-red-500 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm">
-                        ลด {discount}%
+                    <div className="absolute top-3 left-3 z-30 bg-red-500 text-white text-[10px] sm:text-xs font-black px-2.5 py-1 rounded-lg shadow-lg shadow-red-500/20">
+                        -{discount}%
                     </div>
                 )}
 
                 {/* Status Badge */}
                 {product.tags.includes("limited") && (
-                    <div className="absolute top-3 right-3 bg-slate-900 text-white text-[10px] font-bold px-2 py-1 rounded-md shadow-sm">
-                        หายาก
+                    <div className="absolute top-3 right-3 z-30 bg-slate-900/90 backdrop-blur-md text-white text-[9px] sm:text-[10px] font-black uppercase tracking-widest px-2.5 py-1 rounded-lg shadow-lg">
+                        Rare
                     </div>
                 )}
             </Link>

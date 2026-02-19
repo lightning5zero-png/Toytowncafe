@@ -123,15 +123,21 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                         </div>
 
                         {/* Thumbnails (Desktop only) */}
-                        <div className="hidden lg:flex gap-4 mt-6 px-2 overflow-x-auto no-scrollbar">
+                        <div className="hidden lg:flex gap-4 mt-8 px-2 py-4 overflow-x-auto no-scrollbar">
                             {galleryImages.map((img, idx) => (
                                 <button
                                     key={idx}
                                     onClick={() => setCurrentSlide(idx)}
-                                    className={`w-20 h-20 rounded-2xl overflow-hidden border-2 transition-all p-2 bg-white flex-none ${idx === currentSlide ? "border-blue-600 scale-105 shadow-md" : "border-slate-100 hover:border-slate-300 opacity-60 hover:opacity-100"
+                                    className={`w-24 h-24 rounded-2xl overflow-hidden transition-all flex-none relative bg-white ${idx === currentSlide
+                                        ? "ring-2 ring-blue-600 scale-110 shadow-xl z-10"
+                                        : "opacity-50 hover:opacity-100 hover:scale-105"
                                         }`}
                                 >
-                                    <img src={img} className="w-full h-full object-contain" />
+                                    <img src={img} className="w-full h-full object-cover" />
+                                    {/* Selected Indicator Dot */}
+                                    {idx === currentSlide && (
+                                        <div className="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full shadow-lg z-20" />
+                                    )}
                                 </button>
                             ))}
                         </div>
@@ -222,13 +228,28 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                             {relatedProducts.map((p) => (
-                                <Link key={p.id} href={`/product/${p.slug}`} className="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
-                                    <div className="aspect-square p-6 overflow-hidden">
-                                        <img src={p.image} alt={p.name} className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-700" />
+                                <Link key={p.id} href={`/p/${p.slug}`} className="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+                                    <div className="aspect-square relative overflow-hidden bg-[#F8FAFC]">
+                                        {/* Primary Image */}
+                                        <img
+                                            src={p.image}
+                                            alt={p.name}
+                                            className="absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] group-hover:scale-110 group-hover:opacity-0"
+                                        />
+
+                                        {/* Secondary Image (Hover Swap) */}
+                                        <img
+                                            src={(p.images && p.images.length > 1) ? p.images[1] : p.image}
+                                            alt={`${p.name} alternate`}
+                                            className="absolute inset-0 w-full h-full object-cover opacity-0 scale-125 transition-all duration-[1200ms] group-hover:opacity-100 group-hover:scale-100"
+                                        />
+
+                                        {/* Gradient Overlay */}
+                                        <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                     </div>
                                     <div className="p-6 border-t border-slate-100">
-                                        <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest block mb-2">{p.category}</span>
-                                        <h3 className="text-sm font-black text-slate-900 mb-2 line-clamp-1">{p.name}</h3>
+                                        <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest block mb-1">{p.category}</span>
+                                        <h3 className="text-sm font-black text-slate-900 mb-1 line-clamp-1 group-hover:text-blue-600 transition-colors">{p.name}</h3>
                                         <p className="text-lg font-black text-slate-900">฿{(p.price * 35).toLocaleString()}</p>
                                     </div>
                                 </Link>

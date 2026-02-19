@@ -66,13 +66,13 @@ export default function Navbar() {
                                 href="/"
                                 className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
                             >
-                                หน้าแรก
+                                Home
                             </Link>
 
                             {/* Categories Dropdown */}
                             <div className="relative group/cat py-4">
                                 <button className={`flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}>
-                                    หมวดหมู่สินค้า
+                                    หมวดหมู่
                                     <svg className="w-3 h-3 transition-transform group-hover/cat:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
                                     </svg>
@@ -108,14 +108,14 @@ export default function Navbar() {
                                 href="/products"
                                 className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
                             >
-                                สินค้าทั้งหมด
+                                สินค้า
                             </Link>
 
                             <Link
                                 href="/deals"
                                 className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
                             >
-                                สินค้าโปรโมชั่น
+                                โปรโมชั่น
                             </Link>
 
                             <Link
@@ -127,14 +127,14 @@ export default function Navbar() {
                         </div>
 
                         {/* Actions */}
-                        <div className="flex items-center gap-4">
-                            <form onSubmit={handleSearch} className="hidden lg:block relative group">
+                        <div className="flex items-center gap-2 sm:gap-4">
+                            <form onSubmit={handleSearch} className="hidden xl:block relative group">
                                 <input
                                     type="text"
-                                    placeholder="ค้นหาสินค้า..."
+                                    placeholder="ค้นหา..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className={`pl-5 pr-10 py-2.5 rounded-xl text-[11px] font-bold transition-all outline-none w-40 focus:w-64 border ${isScrolled
+                                    className={`pl-5 pr-10 py-2.5 rounded-xl text-[11px] font-bold transition-all outline-none w-32 focus:w-48 border ${isScrolled
                                         ? "bg-slate-100 border-transparent focus:bg-white focus:border-slate-200"
                                         : "bg-white/10 border-white/10 text-white placeholder:text-white/40 focus:bg-white/20 focus:border-white/20"
                                         }`}
