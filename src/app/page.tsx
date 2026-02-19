@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import HeroBanner from "@/components/HeroBanner";
 import ProductGrid from "@/components/ProductGrid";
 import { getAllProducts, searchProducts } from "@/lib/products";
+import type { Product } from "@/types/product";
 
 function HomeContent() {
   const searchParams = useSearchParams();
@@ -14,12 +15,18 @@ function HomeContent() {
     ? searchProducts(searchQuery)
     : allProducts;
 
+  // Filter products for categorized shelves
+  const audioProducts = allProducts.filter((p: Product) => p.category === "Audio").slice(0, 8);
+  const peripheralProducts = allProducts.filter((p: Product) => p.category === "Peripherals").slice(0, 8);
+
   return (
     <main className="min-h-screen">
       {!searchQuery && <HeroBanner />}
       <ProductGrid
         products={products}
         searchQuery={searchQuery || undefined}
+        audioProducts={audioProducts}
+        peripheralProducts={peripheralProducts}
       />
     </main>
   );

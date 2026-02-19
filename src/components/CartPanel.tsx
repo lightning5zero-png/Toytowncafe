@@ -104,7 +104,7 @@ export default function CartPanel({ isOpen, onClose }: CartPanelProps) {
                                             {item.product.name}
                                         </h3>
                                         <p className="text-sm text-violet-400 font-semibold mt-0.5">
-                                            ${item.product.price.toFixed(2)}
+                                            ฿{(item.product.price * 35).toLocaleString()}
                                         </p>
 
                                         {/* Quantity Controls */}
@@ -163,7 +163,7 @@ export default function CartPanel({ isOpen, onClose }: CartPanelProps) {
                         <div className="flex items-center justify-between mb-4">
                             <span className="text-sm text-white/50">Total</span>
                             <span className="text-xl font-bold text-white">
-                                ${totalPrice.toFixed(2)}
+                                ฿{(totalPrice * 35).toLocaleString()}
                             </span>
                         </div>
                         <button

@@ -65,7 +65,7 @@ export default function Navbar() {
                             {["หน้าแรก", "สินค้า", "ดีลพิเศษ", "แกลเลอรี"].map((item) => (
                                 <Link
                                     key={item}
-                                    href="/"
+                                    href={item === "สินค้า" ? "/products" : "/"}
                                     className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled
                                         ? "text-slate-500 hover:text-slate-900"
                                         : "text-white/70 hover:text-white"

@@ -8,10 +8,12 @@ export interface Product {
     price: number;
     originalPrice?: number;
     image: string;
+    images?: string[];
     category: string;
     rating: number;
     reviewCount: number;
     inStock: boolean;
+    brand: string;
     tags: string[];
     features: string[];
 }
