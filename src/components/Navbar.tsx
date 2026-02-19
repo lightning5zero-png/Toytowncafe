@@ -61,24 +61,74 @@ export default function Navbar() {
                         </Link>
 
                         {/* Desktop Navigation */}
-                        <div className="hidden md:flex items-center gap-12">
-                            {["หน้าแรก", "สินค้า", "ดีลพิเศษ", "แกลเลอรี"].map((item) => (
-                                <Link
-                                    key={item}
-                                    href={item === "สินค้า" ? "/products" : "/"}
-                                    className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled
-                                        ? "text-slate-500 hover:text-slate-900"
-                                        : "text-white/70 hover:text-white"
-                                        }`}
-                                >
-                                    {item}
-                                </Link>
-                            ))}
+                        <div className="hidden md:flex items-center gap-10">
+                            <Link
+                                href="/"
+                                className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
+                            >
+                                หน้าแรก
+                            </Link>
+
+                            {/* Categories Dropdown */}
+                            <div className="relative group/cat py-4">
+                                <button className={`flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}>
+                                    หมวดหมู่สินค้า
+                                    <svg className="w-3 h-3 transition-transform group-hover/cat:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
+                                    </svg>
+                                </button>
+
+                                {/* Dropdown Menu */}
+                                <div className="absolute top-full left-1/2 -translate-x-1/2 w-64 pt-2 invisible opacity-0 translate-y-2 group-hover/cat:visible group-hover/cat:opacity-100 group-hover/cat:translate-y-0 transition-all duration-300 ease-out z-[60]">
+                                    <div className="bg-white rounded-2xl shadow-2xl border border-slate-50 p-3 overflow-hidden">
+                                        {[
+                                            { name: "เครื่องเสียง", cat: "Audio" },
+                                            { name: "อุปกรณ์เสริม", cat: "Accessories" },
+                                            { name: "อุปกรณ์ต่อพ่วง", cat: "Peripherals" },
+                                            { name: "หน่วยความจำ", cat: "Storage" },
+                                            { name: "หน้าจอ", cat: "Monitors" },
+                                            { name: "อุปกรณ์สวมใส่", cat: "Wearables" }
+                                        ].map((item) => (
+                                            <Link
+                                                key={item.cat}
+                                                href={`/products?category=${item.cat}`}
+                                                className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
+                                            >
+                                                <span className="text-[11px] font-bold text-slate-600 group-hover/item:text-slate-900 uppercase tracking-widest leading-none mt-0.5">{item.name}</span>
+                                                <svg className="w-3 h-3 text-slate-300 group-hover/item:text-slate-900 transition-transform group-hover/item:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
+                                                </svg>
+                                            </Link>
+                                        ))}
+                                    </div>
+                                </div>
+                            </div>
+
+                            <Link
+                                href="/products"
+                                className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
+                            >
+                                สินค้าทั้งหมด
+                            </Link>
+
+                            <Link
+                                href="/deals"
+                                className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
+                            >
+                                สินค้าโปรโมชั่น
+                            </Link>
+
+                            <Link
+                                href="/articles"
+                                className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
+                            >
+                                บทความ
+                            </Link>
                         </div>
 
                         {/* Actions */}
-                        <div className="flex items-center gap-6">
-                            <form onSubmit={handleSearch} className="hidden sm:block relative group">
+                        <div className="flex items-center gap-4">
+                            <form onSubmit={handleSearch} className="hidden lg:block relative group">
                                 <input
                                     type="text"
                                     placeholder="ค้นหาสินค้า..."

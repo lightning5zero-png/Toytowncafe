@@ -56,46 +56,43 @@ export default function HeroBanner() {
                 </div>
             ))}
 
-            {/* Navigation Indicators & Buttons */}
-            <div className="absolute bottom-6 md:bottom-12 left-1/2 -translate-x-1/2 flex items-center gap-3 md:gap-6 z-20 w-full justify-center px-4">
-                {/* Previous Button */}
-                <button
-                    onClick={prevSlide}
-                    className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all active:scale-90"
-                    aria-label="Previous slide"
-                >
-                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
+            {/* Previous Button - Tall Edge Bar */}
+            <button
+                onClick={prevSlide}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-30 h-24 md:h-48 w-8 md:w-14 bg-black/20 hover:bg-black/40 backdrop-blur-md border-y border-r border-white/10 rounded-r-3xl flex items-center justify-center text-white/50 hover:text-white transition-all duration-300 group"
+                aria-label="Previous slide"
+            >
+                <svg className="w-6 h-6 md:w-8 md:h-8 group-hover:-translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+            </button>
 
-                {/* Dots */}
-                <div className="flex items-center gap-1.5 md:gap-3">
-                    {HERO_SLIDES.map((_, index) => (
-                        <button
-                            key={index}
-                            onClick={() => setCurrentSlide(index)}
-                            className="py-2 md:py-4 px-0.5 md:px-1 group"
-                            aria-label={`Go to slide ${index + 1}`}
-                        >
-                            <div className={`transition-all duration-500 rounded-full ${index === currentSlide
-                                ? "w-6 h-1.5 md:w-10 md:h-2 bg-white shadow-[0_0_15px_rgba(255,255,255,0.8)]"
-                                : "w-2 h-2 md:w-3 md:h-3 bg-white/20 group-hover:bg-white/50"
-                                }`} />
-                        </button>
-                    ))}
-                </div>
+            {/* Next Button - Tall Edge Bar */}
+            <button
+                onClick={nextSlide}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-30 h-24 md:h-48 w-8 md:w-14 bg-black/20 hover:bg-black/40 backdrop-blur-md border-y border-l border-white/10 rounded-l-3xl flex items-center justify-center text-white/50 hover:text-white transition-all duration-300 group"
+                aria-label="Next slide"
+            >
+                <svg className="w-6 h-6 md:w-8 md:h-8 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+            </button>
 
-                {/* Next Button */}
-                <button
-                    onClick={nextSlide}
-                    className="w-8 h-8 md:w-10 md:h-10 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center justify-center text-white hover:bg-white hover:text-slate-900 transition-all active:scale-90"
-                    aria-label="Next slide"
-                >
-                    <svg className="w-4 h-4 md:w-5 md:h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
+            {/* Pagination Dots - Center Bottom */}
+            <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 md:gap-3 z-30 px-6 py-3 rounded-full bg-black/20 backdrop-blur-sm border border-white/5">
+                {HERO_SLIDES.map((_, index) => (
+                    <button
+                        key={index}
+                        onClick={() => setCurrentSlide(index)}
+                        className="py-1 group"
+                        aria-label={`Go to slide ${index + 1}`}
+                    >
+                        <div className={`transition-all duration-500 rounded-full ${index === currentSlide
+                            ? "w-8 h-1.5 md:w-12 md:h-2 bg-white"
+                            : "w-2 h-1.5 md:w-2 md:h-2 bg-white/20 group-hover:bg-white/50"
+                            }`} />
+                    </button>
+                ))}
             </div>
         </section>
     );

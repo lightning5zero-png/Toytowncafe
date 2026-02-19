@@ -61,26 +61,18 @@ export default function ProductGrid({
 
     const isFiltering = searchQuery || filters.categories.length > 0 || filters.brands.length > 0;
 
-    const [bentoPage, setBentoPage] = useState(0);
     const BENTO_SIZE = 7;
-    const totalBentoPages = Math.ceil(products.length / BENTO_SIZE);
 
-    // Auto-slide Bento Grid
-    useEffect(() => {
-        if (isFiltering || hideBento) return;
+    // Filter products with deals (originalPrice > price) and shuffle them for randomization
+    const dealProducts = useMemo(() => {
+        const filtered = products.filter(p => p.originalPrice && p.originalPrice > p.price);
+        // Fisher-Yates shuffle algorithm or simple sort for randomization
+        return [...filtered].sort(() => Math.random() - 0.5);
+    }, [products]);
 
-        const timer = setInterval(() => {
-            setBentoPage((prev) => (prev + 1) % totalBentoPages);
-        }, 4000); // เปลี่ยนทุก 4 วินาที
-
-        return () => clearInterval(timer);
-    }, [totalBentoPages, isFiltering, hideBento]);
-
-    // Simplified Bento Gallery to 7 premium items
     const bentoItems = useMemo(() => {
-        const start = bentoPage * BENTO_SIZE;
-        return products.slice(start, start + BENTO_SIZE);
-    }, [products, bentoPage]);
+        return dealProducts.slice(0, BENTO_SIZE);
+    }, [dealProducts]);
 
     const handleFilterChange = (newFilters: typeof filters) => {
         setFilters(newFilters);
@@ -90,94 +82,115 @@ export default function ProductGrid({
         <section id="discovery" className="bg-white py-12 transition-all duration-500">
             <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
 
-                {/* Step 1: Bento Showcase - Always visible */}
-                {!hideBento && products.length >= BENTO_SIZE && bentoItems.length > 0 && (
+                {/* Step 1: Bento Showcase - Promotional Deals */}
+                {!hideBento && (
                     <div className="mb-20 border-b border-slate-100 pb-20">
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
                             <div className="flex flex-col gap-2">
                                 <div className="flex items-center gap-3">
-                                    <div className="w-10 h-[2px] bg-blue-600" />
-                                    <span className="text-xs font-black text-blue-600 uppercase tracking-[0.3em]">Editor's Choice</span>
+                                    <div className="w-10 h-[2px] bg-red-500" />
+                                    <span className="text-xs font-black text-red-500 uppercase tracking-[0.3em]">Hot Deals</span>
                                 </div>
                                 <h2 className="text-3xl md:text-4xl font-black text-slate-900 tracking-tighter">
-                                    สินค้าแนะนำ
+                                    สินค้าโปรโมชั่น
                                 </h2>
                             </div>
-                            <Link href="#full-collection" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300 hover:text-slate-900 transition-colors flex items-center gap-2 group">
-                                ดูทั้งหมด
-                                <span className="group-hover:translate-y-1 transition-transform">↓</span>
+                            <Link href="/deals" className="text-[10px] font-black uppercase tracking-[0.2em] text-slate-300 hover:text-slate-900 transition-colors flex items-center gap-2 group">
+                                ดูดีลทั้งหมด
+                                <span className="group-hover:translate-x-1 transition-transform">→</span>
                             </Link>
                         </div>
 
                         {/* Top Tier: Hero + Side items */}
                         <div className="flex flex-col gap-3">
-                            <div className="flex flex-col md:flex-row gap-3 md:h-[500px]">
-                                {/* Hero Item */}
-                                {bentoItems[0] && (
-                                    <Link href={`/product/${bentoItems[0].slug}`} className="flex-[2] aspect-[4/3] md:aspect-auto group relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] bg-slate-900 shadow-sm border border-slate-100">
-                                        <img src={bentoItems[0].image} className="w-full h-full object-cover group-hover:scale-105 transition-all duration-[2000ms]" key={bentoItems[0].id} />
-                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
-                                        <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 flex flex-col items-start pr-6">
-                                            <span className="px-1.5 py-0.5 bg-blue-600 text-[8px] font-black text-white uppercase tracking-widest rounded mb-3">Exclusive</span>
-                                            <h3 className="text-xl md:text-3xl font-black text-white tracking-tighter leading-none">{bentoItems[0].name}</h3>
-                                        </div>
-                                    </Link>
-                                )}
-
-                                {/* Side Stack */}
-                                <div className="flex-1 grid grid-cols-2 md:flex md:flex-col gap-3">
-                                    {bentoItems[1] && (
-                                        <Link href={`/product/${bentoItems[1].slug}`} className="aspect-square md:flex-1 group relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-slate-900 border border-white/5">
-                                            <img src={bentoItems[1].image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" key={bentoItems[1].id} />
-                                            <div className="absolute inset-0 bg-slate-950/40 group-hover:bg-slate-950/20 transition-all" />
-                                            <div className="absolute inset-x-0 bottom-0 p-5">
-                                                <span className="text-[9px] md:text-[10px] font-black text-white uppercase tracking-tighter block truncate">{bentoItems[1].name}</span>
-                                            </div>
-                                        </Link>
-                                    )}
-                                    {bentoItems[2] && (
-                                        <Link href={`/product/${bentoItems[2].slug}`} className="aspect-square md:flex-1 group relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-slate-900">
-                                            <img src={bentoItems[2].image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" key={bentoItems[2].id} />
-                                            <div className="absolute inset-0 bg-slate-950/60 group-hover:bg-slate-950/40 transition-all flex flex-col items-center justify-center p-6 text-center">
-                                                <span className="text-[8px] font-black text-blue-400 uppercase tracking-[0.4em] mb-2">Designer</span>
-                                                <h3 className="text-[10px] md:text-xs font-black text-white uppercase tracking-widest leading-tight line-clamp-2">{bentoItems[2].name}</h3>
-                                            </div>
-                                        </Link>
-                                    )}
+                            {dealProducts.length === 0 ? (
+                                <div className="py-20 text-center bg-slate-50 rounded-[2.5rem] border border-dashed border-slate-200">
+                                    <p className="text-slate-400 font-bold uppercase tracking-widest">ไม่มีสินค้าโปรโมชั่นในขณะนี้</p>
                                 </div>
-                            </div>
+                            ) : (
+                                <>
+                                    <div className="flex flex-col md:flex-row gap-3 md:h-[500px]">
+                                        {/* Hero Item */}
+                                        {bentoItems[0] && (
+                                            <Link href={`/product/${bentoItems[0].slug}`} className="flex-[2] aspect-[4/3] md:aspect-auto group relative overflow-hidden rounded-[2rem] md:rounded-[2.5rem] bg-slate-900 shadow-sm">
+                                                <img src={bentoItems[0].image} className="w-full h-full object-cover group-hover:scale-105 transition-all duration-[2000ms]" key={bentoItems[0].id} />
+                                                <div className="absolute inset-0 bg-gradient-to-t from-slate-950/90 via-transparent to-transparent" />
 
-                            {/* Second Tier: Expanded Grid of 4 Items */}
-                            <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:h-[240px]">
-                                {[3, 4, 5, 6].map((idx) => (
-                                    bentoItems[idx] && (
-                                        <Link key={bentoItems[idx].id} href={`/product/${bentoItems[idx].slug}`} className="aspect-square md:aspect-auto group relative overflow-hidden rounded-[1.5rem] md:rounded-3xl bg-slate-900 border border-white/5">
-                                            <img src={bentoItems[idx].image} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-700" />
-                                            <div className="absolute inset-0 bg-slate-950/50 group-hover:bg-slate-950/30 transition-all" />
-                                            <div className="relative h-full flex flex-col justify-end p-6 md:p-8 z-10">
-                                                <p className="text-[9px] md:text-[10px] font-black text-white uppercase tracking-tighter truncate mb-1">{bentoItems[idx].name}</p>
-                                                <div className="flex items-center gap-2">
-                                                    <span className="w-4 h-[1px] bg-blue-600" />
-                                                    <p className="text-[7px] md:text-[8px] font-bold text-blue-400 uppercase tracking-widest">Discover</p>
+                                                {/* Consistent Discount Badge */}
+                                                <div className="absolute top-6 right-6 md:top-10 md:right-10">
+                                                    <div className="bg-red-500 text-white px-4 py-2 rounded-2xl font-black text-sm md:text-lg shadow-xl animate-bounce-slow flex flex-col items-center leading-none">
+                                                        <span className="text-[10px] md:text-xs uppercase mb-1">SAVE</span>
+                                                        <span>{Math.round(((bentoItems[0].originalPrice! - bentoItems[0].price) / bentoItems[0].originalPrice!) * 100)}%</span>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </Link>
-                                    )
-                                ))}
-                            </div>
-                        </div>
 
-                        {/* Bento Pagination Dots */}
-                        <div className="flex justify-center gap-2 mt-10">
-                            {Array.from({ length: totalBentoPages }).map((_, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => setBentoPage(i)}
-                                    className={`h-1.5 rounded-full transition-all duration-300 ${i === bentoPage ? "w-8 bg-slate-900" : "w-2 bg-slate-200 hover:bg-slate-300"
-                                        }`}
-                                    aria-label={`Bento page ${i + 1}`}
-                                />
-                            ))}
+                                                <div className="absolute bottom-6 left-6 md:bottom-10 md:left-10 flex flex-col items-start pr-6">
+                                                    <span className="px-2 py-0.5 bg-red-500 text-[10px] font-black text-white uppercase tracking-widest rounded-full mb-4">Hot Deal</span>
+                                                    <h3 className="text-xl md:text-4xl font-black text-white tracking-tighter leading-none mb-4">{bentoItems[0].name}</h3>
+                                                    <div className="flex items-end gap-3">
+                                                        <span className="text-2xl md:text-5xl font-black text-white">{bentoItems[0].price.toLocaleString()}.-</span>
+                                                        <span className="text-sm md:text-xl font-bold text-white/40 line-through mb-1">{bentoItems[0].originalPrice?.toLocaleString()}.-</span>
+                                                    </div>
+                                                </div>
+                                            </Link>
+                                        )}
+
+                                        {/* Side Stack */}
+                                        <div className="flex-1 grid grid-cols-2 md:flex md:flex-col gap-3">
+                                            {[1, 2].map((idx) => (
+                                                bentoItems[idx] && (
+                                                    <Link key={bentoItems[idx].id} href={`/product/${bentoItems[idx].slug}`} className="aspect-square md:flex-1 group relative overflow-hidden rounded-[1.5rem] md:rounded-[2rem] bg-slate-900">
+                                                        <img src={bentoItems[idx].image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 opacity-60" />
+                                                        <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
+
+                                                        {/* Consistent Discount Badge */}
+                                                        <div className="absolute top-4 right-4 md:top-6 md:right-6">
+                                                            <div className="bg-red-500 text-white px-2.5 py-1.5 rounded-xl font-black text-[10px] md:text-xs shadow-lg">
+                                                                -{Math.round(((bentoItems[idx].originalPrice! - bentoItems[idx].price) / bentoItems[idx].originalPrice!) * 100)}%
+                                                            </div>
+                                                        </div>
+
+                                                        <div className="absolute inset-x-0 bottom-0 p-5 md:p-8">
+                                                            <h3 className="text-[12px] md:text-sm font-black text-white uppercase tracking-tighter leading-tight mb-2 line-clamp-1">{bentoItems[idx].name}</h3>
+                                                            <div className="flex items-center gap-2">
+                                                                <span className="text-sm md:text-lg font-black text-white">{bentoItems[idx].price.toLocaleString()}.-</span>
+                                                                <span className="text-[10px] md:text-xs font-bold text-white/40 line-through">{bentoItems[idx].originalPrice?.toLocaleString()}</span>
+                                                            </div>
+                                                        </div>
+                                                    </Link>
+                                                )
+                                            ))}
+                                        </div>
+                                    </div>
+
+                                    {/* Second Tier: Grid of 4 Items */}
+                                    <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:h-[240px]">
+                                        {[3, 4, 5, 6].map((idx) => (
+                                            bentoItems[idx] && (
+                                                <Link key={bentoItems[idx].id} href={`/product/${bentoItems[idx].slug}`} className="aspect-square md:aspect-auto group relative overflow-hidden rounded-[1.5rem] md:rounded-3xl bg-slate-900">
+                                                    <img src={bentoItems[idx].image} className="absolute inset-0 w-full h-full object-cover group-hover:scale-110 transition-all duration-700 opacity-60" />
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-slate-950/80 to-transparent" />
+
+                                                    {/* Consistent Discount Badge */}
+                                                    <div className="absolute top-4 right-4">
+                                                        <div className="bg-red-500 text-white px-2 py-1 rounded-lg font-black text-[9px] md:text-[10px] shadow-lg">
+                                                            -{Math.round(((bentoItems[idx].originalPrice! - bentoItems[idx].price) / bentoItems[idx].originalPrice!) * 100)}%
+                                                        </div>
+                                                    </div>
+
+                                                    <div className="absolute inset-0 flex flex-col justify-end p-6 z-10">
+                                                        <p className="text-[10px] font-black text-white uppercase tracking-tighter truncate mb-2">{bentoItems[idx].name}</p>
+                                                        <div className="flex items-center gap-2">
+                                                            <span className="text-sm font-black text-white">{bentoItems[idx].price.toLocaleString()}.-</span>
+                                                            <span className="text-[10px] font-bold text-white/40 line-through">{bentoItems[idx].originalPrice?.toLocaleString()}</span>
+                                                        </div>
+                                                    </div>
+                                                </Link>
+                                            )
+                                        ))}
+                                    </div>
+                                </>
+                            )}
                         </div>
                     </div>
                 )}

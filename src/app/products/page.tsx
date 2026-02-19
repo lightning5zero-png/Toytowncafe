@@ -8,10 +8,16 @@ import { getAllProducts, searchProducts } from "@/lib/products";
 function ProductsContent() {
     const searchParams = useSearchParams();
     const searchQuery = searchParams.get("search") || "";
+    const categoryQuery = searchParams.get("category") || "";
     const allProducts = getAllProducts();
-    const products = searchQuery
-        ? searchProducts(searchQuery)
-        : allProducts;
+
+    let products = allProducts;
+
+    if (searchQuery) {
+        products = searchProducts(searchQuery);
+    } else if (categoryQuery) {
+        products = allProducts.filter(p => p.category.toLowerCase() === categoryQuery.toLowerCase());
+    }
 
     return (
         <main className="min-h-screen pt-24">
