@@ -63,12 +63,16 @@ export default function ProductGrid({
 
     const BENTO_SIZE = 7;
 
-    // Filter products with deals (originalPrice > price) and shuffle them for randomization
-    const dealProducts = useMemo(() => {
+    const [mounted, setMounted] = useState(false);
+    const [randomizedDeals, setRandomizedDeals] = useState<typeof products>([]);
+
+    useEffect(() => {
+        setMounted(true);
         const filtered = products.filter(p => p.originalPrice && p.originalPrice > p.price);
-        // Fisher-Yates shuffle algorithm or simple sort for randomization
-        return [...filtered].sort(() => Math.random() - 0.5);
+        setRandomizedDeals([...filtered].sort(() => Math.random() - 0.5));
     }, [products]);
+
+    const dealProducts = randomizedDeals;
 
     const bentoItems = useMemo(() => {
         return dealProducts.slice(0, BENTO_SIZE);
@@ -83,7 +87,7 @@ export default function ProductGrid({
             <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8">
 
                 {/* Step 1: Bento Showcase - Promotional Deals */}
-                {!hideBento && (
+                {!hideBento && mounted && (
                     <div className="mb-20 border-b border-slate-100 pb-20">
                         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
                             <div className="flex flex-col gap-2">
