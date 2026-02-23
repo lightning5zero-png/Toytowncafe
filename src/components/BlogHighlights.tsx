@@ -52,15 +52,7 @@ const ALL_ARTICLES = [
 ];
 
 export default function BlogHighlights() {
-    const [randomArticles, setRandomArticles] = useState<typeof ALL_ARTICLES>([]);
-
-    useEffect(() => {
-        // Shuffle and pick 3
-        const shuffled = [...ALL_ARTICLES].sort(() => 0.5 - Math.random());
-        setRandomArticles(shuffled.slice(0, 3));
-    }, []);
-
-    if (randomArticles.length === 0) return null;
+    const randomArticles = ALL_ARTICLES.slice(0, 3);
 
     return (
         <section className="py-24 bg-slate-50/50">

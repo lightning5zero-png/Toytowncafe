@@ -1,41 +1,76 @@
+import { prisma } from "./prisma";
 import type { Product } from "@/types/product";
-import productsData from "@/data/products.json";
 
-/** Retrieve all products from the mock data source */
-export function getAllProducts(): Product[] {
-    return productsData as Product[];
+/** 
+ * Map Prisma Product to Frontend Product type 
+ */
+function mapPrismaToProduct(p: any): Product {
+    return {
+        ...p,
+        images: JSON.parse(p.images || "[]"),
+        tags: JSON.parse(p.tags || "[]"),
+        features: JSON.parse(p.features || "[]"),
+        category: p.category?.name || "Uncategorized", // Access the name from joined Category
+    };
+}
+
+/** Retrieve all products from the database */
+export async function getAllProducts(): Promise<Product[]> {
+    const products = await prisma.product.findMany({
+        include: { category: true },
+        orderBy: { createdAt: 'desc' }
+    });
+    return products.map(mapPrismaToProduct);
 }
 
 /** Retrieve a single product by its slug */
-export function getProductBySlug(slug: string): Product | undefined {
-    return (productsData as Product[]).find((p) => p.slug === slug);
+export async function getProductBySlug(slug: string): Promise<Product | null> {
+    const product = await prisma.product.findUnique({
+        where: { slug },
+        include: { category: true }
+    });
+    return product ? mapPrismaToProduct(product) : null;
 }
 
 /** Retrieve all unique product categories */
-export function getCategories(): string[] {
-    const categories = new Set(
-        (productsData as Product[]).map((p) => p.category)
-    );
-    return Array.from(categories).sort();
+export async function getCategories(): Promise<string[]> {
+    const categories = await prisma.category.findMany({
+        select: { name: true },
+        orderBy: { name: 'asc' }
+    });
+    return categories.map((c: { name: string }) => c.name);
 }
 
 /** Search products by name, description, or category */
-export function searchProducts(query: string): Product[] {
+export async function searchProducts(query: string): Promise<Product[]> {
     const q = query.toLowerCase().trim();
     if (!q) return getAllProducts();
 
-    return (productsData as Product[]).filter(
-        (p) =>
-            p.name.toLowerCase().includes(q) ||
-            p.description.toLowerCase().includes(q) ||
-            p.category.toLowerCase().includes(q) ||
-            p.tags.some((tag) => tag.toLowerCase().includes(q))
-    );
+    const products = await prisma.product.findMany({
+        where: {
+            OR: [
+                { name: { contains: q } },
+                { description: { contains: q } },
+                { category: { name: { contains: q } } },
+            ]
+        },
+        include: { category: true }
+    });
+
+    return products.map(mapPrismaToProduct);
 }
 
 /** Filter products by category */
-export function getProductsByCategory(category: string): Product[] {
-    return (productsData as Product[]).filter(
-        (p) => p.category.toLowerCase() === category.toLowerCase()
-    );
+export async function getProductsByCategory(categoryName: string): Promise<Product[]> {
+    const products = await prisma.product.findMany({
+        where: {
+            category: {
+                name: {
+                    equals: categoryName,
+                }
+            }
+        },
+        include: { category: true }
+    });
+    return products.map(mapPrismaToProduct);
 }

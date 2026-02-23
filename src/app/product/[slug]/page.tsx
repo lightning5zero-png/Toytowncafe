@@ -1,6 +1,6 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
-import { getProductBySlug } from "@/lib/products";
+import { getProductBySlug, getAllProducts } from "@/lib/products";
 import ProductDetailClient from "./ProductDetailClient";
 
 interface ProductDetailPageProps {
@@ -9,7 +9,7 @@ interface ProductDetailPageProps {
 
 export async function generateMetadata({ params }: ProductDetailPageProps): Promise<Metadata> {
     const { slug } = await params;
-    const product = getProductBySlug(slug);
+    const product = await getProductBySlug(slug);
 
     if (!product) {
         return {
@@ -43,11 +43,17 @@ export async function generateMetadata({ params }: ProductDetailPageProps): Prom
 
 export default async function ProductDetailPage({ params }: ProductDetailPageProps) {
     const { slug } = await params;
-    const product = getProductBySlug(slug);
+    const product = await getProductBySlug(slug);
 
     if (!product) {
         notFound();
     }
+
+    // Fetch related products on the server
+    const allProducts = await getAllProducts();
+    const relatedProducts = allProducts
+        .filter((p) => p.category === product.category && p.id !== product.id)
+        .slice(0, 4);
 
     // Structured Data for SEO / AI Search
     const jsonLd = {
@@ -81,7 +87,7 @@ export default async function ProductDetailPage({ params }: ProductDetailPagePro
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
             />
-            <ProductDetailClient product={product} />
+            <ProductDetailClient product={product} relatedProducts={relatedProducts} />
         </>
     );
 }

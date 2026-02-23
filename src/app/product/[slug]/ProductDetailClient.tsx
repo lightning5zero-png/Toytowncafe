@@ -2,11 +2,17 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useCart } from "@/context/CartContext";
 import type { Product } from "@/types/product";
-import { getAllProducts } from "@/lib/products";
 
-export default function ProductDetailClient({ product }: { product: Product }) {
+export default function ProductDetailClient({
+    product,
+    relatedProducts
+}: {
+    product: Product;
+    relatedProducts: Product[];
+}) {
     const { addToCart } = useCart();
     const [quantity, setQuantity] = useState(1);
     const [addedToCart, setAddedToCart] = useState(false);
@@ -41,9 +47,6 @@ export default function ProductDetailClient({ product }: { product: Product }) {
         setTimeout(() => setAddedToCart(false), 2000);
     };
 
-    const relatedProducts = getAllProducts()
-        .filter((p) => p.category === product.category && p.id !== product.id)
-        .slice(0, 4);
 
     return (
         <main className="min-h-screen pt-24 pb-16 bg-slate-50">
@@ -68,11 +71,14 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                             {/* Images */}
                             <div className="absolute inset-0 flex transition-transform duration-500 ease-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                                 {galleryImages.map((img, idx) => (
-                                    <div key={idx} className="flex-none w-full h-full flex items-center justify-center">
-                                        <img
+                                    <div key={idx} className="flex-none w-full h-full flex items-center justify-center relative">
+                                        <Image
                                             src={img}
                                             alt={`${product.name} ${idx + 1}`}
-                                            className="w-full h-full object-cover"
+                                            fill
+                                            priority={idx === 0}
+                                            sizes="(max-width: 1024px) 100vw, 50vw"
+                                            className="object-cover"
                                         />
                                     </div>
                                 ))}
@@ -133,7 +139,13 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                                         : "opacity-50 hover:opacity-100 hover:scale-105"
                                         }`}
                                 >
-                                    <img src={img} className="w-full h-full object-cover" />
+                                    <Image
+                                        src={img}
+                                        alt={`Thumbnail ${idx + 1}`}
+                                        fill
+                                        sizes="100px"
+                                        className="object-cover"
+                                    />
                                     {/* Selected Indicator Dot */}
                                     {idx === currentSlide && (
                                         <div className="absolute top-2 right-2 w-2 h-2 bg-blue-600 rounded-full shadow-lg z-20" />
@@ -231,17 +243,21 @@ export default function ProductDetailClient({ product }: { product: Product }) {
                                 <Link key={p.id} href={`/p/${p.slug}`} className="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
                                     <div className="aspect-square relative overflow-hidden bg-[#F8FAFC]">
                                         {/* Primary Image */}
-                                        <img
+                                        <Image
                                             src={p.image}
                                             alt={p.name}
-                                            className="absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] group-hover:scale-110 group-hover:opacity-0"
+                                            fill
+                                            sizes="(max-width: 640px) 100vw, 25vw"
+                                            className="object-cover transition-all duration-[1200ms] group-hover:scale-110 group-hover:opacity-0"
                                         />
 
                                         {/* Secondary Image (Hover Swap) */}
-                                        <img
+                                        <Image
                                             src={(p.images && p.images.length > 1) ? p.images[1] : p.image}
                                             alt={`${p.name} alternate`}
-                                            className="absolute inset-0 w-full h-full object-cover opacity-0 scale-125 transition-all duration-[1200ms] group-hover:opacity-100 group-hover:scale-100"
+                                            fill
+                                            sizes="(max-width: 640px) 100vw, 25vw"
+                                            className="object-cover opacity-0 scale-125 transition-all duration-[1200ms] group-hover:opacity-100 group-hover:scale-100"
                                         />
 
                                         {/* Gradient Overlay */}

@@ -1,41 +1,36 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import ProductGrid from "@/components/ProductGrid";
-import { getAllProducts, searchProducts } from "@/lib/products";
+import { getAllProducts, searchProducts, getProductsByCategory } from "@/lib/products";
 
-function ProductsContent() {
-    const searchParams = useSearchParams();
-    const searchQuery = searchParams.get("search") || "";
-    const categoryQuery = searchParams.get("category") || "";
-    const allProducts = getAllProducts();
+// Server Component
+export default async function ProductsPage({
+    searchParams,
+}: {
+    searchParams: Promise<{ search?: string; category?: string }>;
+}) {
+    const params = await searchParams;
+    const searchQuery = params.search || "";
+    const categoryQuery = params.category || "";
 
-    let products = allProducts;
+    let products;
 
     if (searchQuery) {
-        products = searchProducts(searchQuery);
+        products = await searchProducts(searchQuery);
     } else if (categoryQuery) {
-        products = allProducts.filter(p => p.category.toLowerCase() === categoryQuery.toLowerCase());
+        products = await getProductsByCategory(categoryQuery);
+    } else {
+        products = await getAllProducts();
     }
 
     return (
         <main className="min-h-screen pt-24">
-            <ProductGrid
-                products={products}
-                searchQuery={searchQuery || undefined}
-                hideBento={true}
-            // Bento and Category shelves are hidden by default in search mode or when we don't pass them
-            // But let's ensure ProductGrid handles the "only grid" view nicely.
-            />
+            <Suspense fallback={<div className="h-screen flex items-center justify-center">Loading Products...</div>}>
+                <ProductGrid
+                    products={products}
+                    searchQuery={searchQuery || undefined}
+                    hideBento={true}
+                />
+            </Suspense>
         </main>
-    );
-}
-
-export default function ProductsPage() {
-    return (
-        <Suspense backdrop-blur-xl>
-            <ProductsContent />
-        </Suspense>
     );
 }

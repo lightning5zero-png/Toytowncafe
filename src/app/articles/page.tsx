@@ -1,5 +1,3 @@
-"use client";
-
 export default function ArticlesPage() {
     return (
         <main className="min-h-screen pt-32">
@@ -17,7 +15,7 @@ export default function ArticlesPage() {
                     {/* Placeholder Articles */}
                     {[1, 2, 3].map((i) => (
                         <div key={i} className="group cursor-pointer">
-                            <div className="aspect-[16/10] bg-slate-100 rounded-[32px] mb-6 overflow-hidden relative">
+                            <div className="aspect-[16/10] bg-slate-100 rounded-[32px] mb-6 overflow-hidden relative border border-slate-50">
                                 <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-100 animate-pulse" />
                                 <div className="absolute inset-0 flex items-center justify-center">
                                     <span className="text-slate-400 font-black uppercase tracking-widest text-xs">ภาพประกอบบทความ</span>
@@ -33,7 +31,7 @@ export default function ArticlesPage() {
                                 การเลือกซื้อหูฟังไม่ได้มีเพียงแค่เรื่องของคุณภาพเสียงเท่านั้น แต่ยังรวมถึงความสะดวกสบายในการสวมใส่...
                             </p>
                             <div className="flex items-center gap-3">
-                                <div className="w-8 h-8 rounded-full bg-slate-200" />
+                                <div className="w-8 h-8 rounded-full bg-slate-100" />
                                 <div className="flex flex-col leading-none">
                                     <span className="text-[11px] font-black text-slate-900">Admin Toytown</span>
                                     <span className="text-[10px] font-bold text-slate-400 mt-0.5">19 กุมภาพันธ์ 2026</span>

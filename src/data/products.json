@@ -304,5 +304,309 @@
             "USB-C Connection",
             "Built-in Controls"
         ]
+    },
+    {
+        "id": 13,
+        "name": "Gundam RX-78-2 Master Grade",
+        "slug": "gundam-rx78-2-master-grade",
+        "description": "High-detail model kit of the legendary RX-78-2 Gundam.",
+        "longDescription": "The Master Grade RX-78-2 Gundam Ver. 3.0 is a masterpiece of engineering. This model kit features a highly articulated inner frame, multi-tone color molding, and intricate detailing that brings the original Mobile Suit to life. Includes various weapons like the Beam Rifle, Shield, and Hyper Bazooka. Perfect for both beginners and experienced builders looking for a centerpiece for their collection.",
+        "price": 55.00,
+        "originalPrice": 65.00,
+        "image": "https://images.unsplash.com/photo-1608889175123-8ee362201f81?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Bandai Namco",
+        "rating": 4.9,
+        "reviewCount": 850,
+        "inStock": true,
+        "tags": [
+            "bestseller",
+            "model-kit"
+        ],
+        "features": [
+            "1/100 Scale",
+            "Highly Articulated",
+            "Weapon Set Included",
+            "Sticker Decals",
+            "Snap-fit Assembly"
+        ]
+    },
+    {
+        "id": 14,
+        "name": "Roronoa Zoro - Wano Country Figure",
+        "slug": "roronoa-zoro-wano-country-figure",
+        "description": "Highly detailed collectible figure of Roronoa Zoro in his Wano Country outfit.",
+        "longDescription": "Bring home the Three-Sword Style master with this stunning Wano Country arc figure. Standing at 25cm tall, Roronoa Zoro is captured in a dynamic action pose, ready to unleash his powerful techniques. The figure features exquisite paintwork on his traditional Wano kimono and detailed sculpts of his three legendary swords. A must-have for any One Piece fan.",
+        "price": 45.00,
+        "image": "https://images.unsplash.com/photo-1594465919760-441fe5ad03bf?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Banpresto",
+        "rating": 4.8,
+        "reviewCount": 1200,
+        "inStock": true,
+        "tags": [
+            "anime",
+            "one-piece"
+        ],
+        "features": [
+            "PVC Material",
+            "Dynamic Pose",
+            "25cm Tall",
+            "Authentic Details",
+            "Base Included"
+        ]
+    },
+    {
+        "id": 15,
+        "name": "Tanjiro Kamado - Hinokami Kagura Figure",
+        "slug": "tanjiro-hinokami-kagura",
+        "description": "Premium figure depicting Tanjiro Kamado using the Sun Breathing technique.",
+        "longDescription": "Relive the intensity of Demon Slayer with this Hinokami Kagura edition Tanjiro figure. The translucent flame effects wrap around his nichirin sword, creating a breathtaking visual of the Sun Breathing technique. Every detail, from the pattern on his haori to the determination in his eyes, is masterfully crafted for collectors.",
+        "price": 89.99,
+        "originalPrice": 110.00,
+        "image": "https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Aniplex",
+        "rating": 4.9,
+        "reviewCount": 560,
+        "inStock": true,
+        "tags": [
+            "premium",
+            "demon-slayer"
+        ],
+        "features": [
+            "LED Effects",
+            "High-Quality Paint",
+            "Limited Edition",
+            "Sun Breathing Base",
+            "Collector's Box"
+        ]
+    },
+    {
+        "id": 16,
+        "name": "Anya Forger & Bond Nendoroid",
+        "slug": "anya-bond-nendoroid",
+        "description": "Adorable Nendoroid set of Anya Forger and her faithful companion Bond.",
+        "longDescription": "Waku waku! The telepathic Anya Forger and the future-seeing Bond join the Nendoroid series. This set includes multiple face plates for Anya, including her iconic 'he' smug face. Bond comes in a sitting pose, and you can even pose Anya riding on his back. Perfect for adding a touch of humor and cuteness to your desk.",
+        "price": 62.00,
+        "image": "https://images.unsplash.com/photo-1615485240833-25916672323e?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Good Smile Company",
+        "rating": 5.0,
+        "reviewCount": 420,
+        "inStock": true,
+        "tags": [
+            "nendoroid",
+            "chibi"
+        ],
+        "features": [
+            "Interchangeable Faces",
+            "Bond Figure Included",
+            "Articulated Joints",
+            "Stand Included",
+            "Premium PVC"
+        ]
+    },
+    {
+        "id": 17,
+        "name": "Super Saiyan Goku - Dragon Ball Z Figure",
+        "slug": "super-saiyan-goku-figure",
+        "description": "Iconic Super Saiyan Goku figure with battle-damaged sculpt.",
+        "longDescription": "Relive the legendary battle on Planet Namek with this Super Saiyan Goku figure. Featuring a battle-damaged gi and intense facial expression, this figure captures the moment Goku first transformed into the legendary warrior. The sculpt emphasizes muscle definition and hair texture, making it a standout piece in any Dragon Ball collection.",
+        "price": 35.00,
+        "image": "https://images.unsplash.com/photo-1534346235121-7489c6462744?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Bandai Tamashii Nations",
+        "rating": 4.7,
+        "reviewCount": 2100,
+        "inStock": true,
+        "tags": [
+            "classic",
+            "dragon-ball"
+        ],
+        "features": [
+            "SH Figuarts Series",
+            "High Posability",
+            "Energy Effect Parts",
+            "Multiple Hand Sets",
+            "Face Plates"
+        ]
+    },
+    {
+        "id": 18,
+        "name": "Satoru Gojo - Hollow Purple Ver.",
+        "slug": "satoru-gojo-hollow-purple",
+        "description": "Impressive figure of Satoru Gojo unleashing his Hollow Purple technique.",
+        "longDescription": "The strongest Jujutsu Sorcerer, Satoru Gojo, is rendered here in stunning detail as he prepares to fire the Hollow Purple. The figure includes a translucent effect part representing the immense energy manifestation. His blindfold is removable, revealing the beautifully rendered Six Eyes underneath. A true centerpiece for Jujutsu Kaisen fans.",
+        "price": 120.00,
+        "originalPrice": 145.00,
+        "image": "https://images.unsplash.com/photo-1634926878768-2a5b3c42f139?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Kotobukiya",
+        "rating": 4.9,
+        "reviewCount": 310,
+        "inStock": true,
+        "tags": [
+            "premium",
+            "jujutsu-kaisen"
+        ],
+        "features": [
+            "Six Eyes Revealed",
+            "Translucent Effects",
+            "Special Edition Base",
+            "1/8 Scale",
+            "Art Box"
+        ]
+    },
+    {
+        "id": 19,
+        "name": "Hatsune Miku - Sakura Miku 2024",
+        "slug": "sakura-miku-2024",
+        "description": "Beautiful spring-themed Hatsune Miku figure with cherry blossom details.",
+        "longDescription": "Celebrate the cherry blossom season with the 2024 edition of Sakura Miku. This figure features Miku in her lovely pink and white outfit, adorned with cherry blossom motifs. Her long twin-tails are made of translucent material with a subtle gradient, catching the light like spring petals. Add a touch of seasonal beauty to your display.",
+        "price": 38.00,
+        "image": "https://images.unsplash.com/photo-1615485240833-25916672323e?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Taito",
+        "rating": 4.6,
+        "reviewCount": 150,
+        "inStock": true,
+        "tags": [
+            "miku",
+            "seasonal"
+        ],
+        "features": [
+            "Translucent Hair",
+            "Glossy Finish",
+            "Flower Patterned Base",
+            "Artist Original Design",
+            "Prize Figure"
+        ]
+    },
+    {
+        "id": 20,
+        "name": "Eva Unit-01 Real Grade Model Kit",
+        "slug": "eva-unit-01-rg",
+        "description": "Next-generation model kit of the Evangelion Unit-01 with realistic movement.",
+        "longDescription": "The Real Grade Evangelion Unit-01 brings the iconic robot to life with human-like articulation. The multi-colored molding and interlocking body parts allow for extremely natural poses, including the signature sprint. Kit includes the Pallet Rifle, Progressive Knife, and Umbilical Cable. No paint required, though detailing is encouraged for a professional look.",
+        "price": 68.00,
+        "image": "https://images.unsplash.com/photo-1550745165-9bc0b252726f?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Bandai Namco",
+        "rating": 4.8,
+        "reviewCount": 780,
+        "inStock": true,
+        "tags": [
+            "evangelion",
+            "model-kit"
+        ],
+        "features": [
+            "RG Series Detail",
+            "Advanced MS Joint",
+            "Entry Plug Included",
+            "Weapon Set",
+            "Decal Sheets"
+        ]
+    },
+    {
+        "id": 21,
+        "name": "Denji & Pochita - Chainsaw Man Figure",
+        "slug": "denji-pochita-figure",
+        "description": "Action figure of Denji in his human form accompanied by Pochita.",
+        "longDescription": "Capture the bond between Denji and the Chainsaw Devil with this heartwarming figure set. Denji is posed casually with a slice of bread, while Pochita sits playfully by his side. The figure's paint job perfectly captures the gritty yet vibrant aesthetic of the Chainsaw Man anime. Includes a base designed like a city sidewalk.",
+        "price": 42.00,
+        "image": "https://images.unsplash.com/photo-1566576721346-d4a3b4eaad21?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Sega",
+        "rating": 4.7,
+        "reviewCount": 920,
+        "inStock": true,
+        "tags": [
+            "chainsaw-man",
+            "popular"
+        ],
+        "features": [
+            "Pochita Included",
+            "Detailed Clothing",
+            "Vibrant Colors",
+            "Sturdy Base",
+            "Non-Scale Figure"
+        ]
+    },
+    {
+        "id": 22,
+        "name": "Pikachu & Eevee Celebration Diorama",
+        "slug": "pikachu-eevee-celebration",
+        "description": "Limited edition Pokemon diorama featuring Pikachu and Eevee playing.",
+        "longDescription": "Celebrate over 25 years of Pokemon with this exquisite diorama. Pikachu and Eevee are captured in a joyful scene, surrounded by forest details and a Pokélink base. The high-quality finish and vibrant colors make this a treasure for any Pokémon trainer. Each unit is individually numbered for collectors.",
+        "price": 115.00,
+        "image": "https://images.unsplash.com/photo-1542332213-31f87348057f?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Pokemon Center",
+        "rating": 5.0,
+        "reviewCount": 210,
+        "inStock": false,
+        "tags": [
+            "pokemon",
+            "limited-edition"
+        ],
+        "features": [
+            "Individually Numbered",
+            "Premium Sculpt",
+            "Large Diorama Size",
+            "Official Merchandise",
+            "Certificate of Authenticity"
+        ]
+    },
+    {
+        "id": 23,
+        "name": "Monkey D. Luffy - Gear 5 Awakening",
+        "slug": "luffy-gear-5-awakening",
+        "description": "Spectacular figure of Luffy's Gear 5 form with cloud effects.",
+        "longDescription": "The peak of Luffy's power! This figure captures the Joyboy awakening with Luffy's cloud-like hair and signature white clothes. His laughter is almost audible through the dynamic sculpt. The figure is surrounded by translucent lightning and smoke effects that enhance the legendary 'Warrior of Liberation' presence.",
+        "price": 195.00,
+        "originalPrice": 220.00,
+        "image": "https://images.unsplash.com/photo-1559535332-db9971090454?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "MegaHouse",
+        "rating": 5.0,
+        "reviewCount": 450,
+        "inStock": true,
+        "tags": [
+            "one-piece",
+            "new-release"
+        ],
+        "features": [
+            "Portrait.Of.Pirates Series",
+            "High-End Sculpt",
+            "Cloud/Lightning Effects",
+            "Removable Base",
+            "Exclusive Box Art"
+        ]
+    },
+    {
+        "id": 24,
+        "name": "Kakashi Hatake - Anbu Black Ops Figure",
+        "slug": "kakashi-anbu-figure",
+        "description": "Cool and sleek figure of Kakashi during his days in the Anbu Black Ops.",
+        "longDescription": "Step back into the dark past of Konoha with this Anbu Kakashi figure. Equipped with his signature mask and katana, Kakashi is posed in a stealthy crouching position. The figure includes an interchangeable head piece to display him either with his mask on or showing his Sharingan eye. A masterpiece of stealth and style.",
+        "price": 58.00,
+        "image": "https://images.unsplash.com/photo-1578632738980-433463a99266?w=800&h=800&fit=crop",
+        "category": "Figures",
+        "brand": "Bandai Namco",
+        "rating": 4.8,
+        "reviewCount": 670,
+        "inStock": true,
+        "tags": [
+            "naruto",
+            "ninja"
+        ],
+        "features": [
+            "Anbu Mask Included",
+            "Sharingan Detail",
+            "Sleek Black Outfit",
+            "Katana Accessory",
+            "Crouching Base"
+        ]
     }
 ]

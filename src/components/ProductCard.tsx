@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import type { Product } from "@/types/product";
 import { useCart } from "@/context/CartContext";
@@ -20,17 +21,21 @@ export default function ProductCard({ product }: ProductCardProps) {
             {/* Product Image Container: Full Frame with Image Swap on Hover */}
             <Link href={`/product/${product.slug}`} className="block relative aspect-square overflow-hidden rounded-t-2xl bg-[#F8FAFC]">
                 {/* Primary Image (Full Frame) */}
-                <img
+                <Image
                     src={product.image}
                     alt={product.name}
-                    className="absolute inset-0 w-full h-full object-cover transition-all duration-[1200ms] group-hover:scale-110 group-hover:opacity-0"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover transition-all duration-[1200ms] group-hover:scale-110 group-hover:opacity-0"
                 />
 
                 {/* Secondary Image (Visible on Hover) - Uses second image from array or primary as fallback */}
-                <img
+                <Image
                     src={(product.images && product.images.length > 1) ? product.images[1] : product.image}
                     alt={`${product.name} alternate`}
-                    className="absolute inset-0 w-full h-full object-cover opacity-0 scale-125 transition-all duration-[1200ms] group-hover:opacity-100 group-hover:scale-100"
+                    fill
+                    sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                    className="object-cover opacity-0 scale-125 transition-all duration-[1200ms] group-hover:opacity-100 group-hover:scale-100"
                 />
 
                 {/* Subtle Bottom Overlay for better text readability and "Depth" */}

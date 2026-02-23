@@ -6,6 +6,13 @@ generator client {
 
 datasource db {
   provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Category {
+  id       Int       @id @default(autoincrement())
+  name     String    @unique
+  products Product[]
 }
 
 model Product {
@@ -17,41 +24,63 @@ model Product {
   price           Float
   originalPrice   Float?
   image           String
-  category        String
+  images          String    @default("[]") // Store as JSON array string
+  brand           String?
+  
+  // Relation to Category
+  categoryId      Int
+  category        Category  @relation(fields: [categoryId], references: [id])
+  
   rating          Float     @default(0)
   reviewCount     Int       @default(0)
   inStock         Boolean   @default(true)
-  tags            String    @default("[]")
-  features        String    @default("[]")
+  tags            String    @default("[]") // Store as JSON array string
+  features        String    @default("[]") // Store as JSON array string
   createdAt       DateTime  @default(now())
   updatedAt       DateTime  @updatedAt
 
   cartItems  CartItem[]
   orderItems OrderItem[]
+  reviews    Review[]
 
-  @@index([category])
+  @@index([categoryId])
   @@index([slug])
 }
 
-model User {
+model Customer {
   id        Int      @id @default(autoincrement())
   email     String   @unique
   name      String?
+  phone     String?
+  address   String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 
-  cart   Cart?
-  orders Order[]
+  cart    Cart?
+  orders  Order[]
+  reviews Review[]
+}
+
+model Review {
+  id          Int      @id @default(autoincrement())
+  customerId  Int
+  productId   Int
+  rating      Int
+  content     String
+  date        DateTime @default(now())
+
+  customer    Customer @relation(fields: [customerId], references: [id])
+  product     Product  @relation(fields: [productId], references: [id])
 }
 
 model Cart {
-  id        Int        @id @default(autoincrement())
-  userId    Int        @unique
-  createdAt DateTime   @default(now())
-  updatedAt DateTime   @updatedAt
+  id         Int        @id @default(autoincrement())
+  customerId Int        @unique
+  createdAt  DateTime   @default(now())
+  updatedAt  DateTime   @updatedAt
 
-  user  User       @relation(fields: [userId], references: [id])
-  items CartItem[]
+  customer Customer   @relation(fields: [customerId], references: [id])
+  items    CartItem[]
 }
 
 model CartItem {
@@ -68,15 +97,15 @@ model CartItem {
 }
 
 model Order {
-  id        Int         @id @default(autoincrement())
-  userId    Int
-  total     Float
-  status    String      @default("pending")
-  createdAt DateTime    @default(now())
-  updatedAt DateTime    @updatedAt
+  id         Int         @id @default(autoincrement())
+  customerId Int
+  amount     Float       // total amount
+  date       DateTime    @default(now())
+  status     String      @default("pending") // e.g., "pending", "paid", "shipped"
+  updatedAt  DateTime    @updatedAt
 
-  user  User        @relation(fields: [userId], references: [id])
-  items OrderItem[]
+  customer   Customer    @relation(fields: [customerId], references: [id])
+  items      OrderItem[]
 }
 
 model OrderItem {
@@ -91,3 +120,4 @@ model OrderItem {
 
   @@unique([orderId, productId])
 }
+

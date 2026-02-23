@@ -1,18 +1,22 @@
-"use client";
-
-import { useSearchParams } from "next/navigation";
 import { Suspense } from "react";
 import HeroBanner from "@/components/HeroBanner";
 import ProductGrid from "@/components/ProductGrid";
 import { getAllProducts, searchProducts } from "@/lib/products";
 import type { Product } from "@/types/product";
 
-function HomeContent() {
-  const searchParams = useSearchParams();
-  const searchQuery = searchParams.get("search") || "";
-  const allProducts = getAllProducts();
+// This is now a Server Component
+export default async function HomePage({
+  searchParams,
+}: {
+  searchParams: Promise<{ search?: string }>;
+}) {
+  const params = await searchParams;
+  const searchQuery = params.search || "";
+
+  // Data fetching on the server
+  const allProducts = await getAllProducts();
   const products = searchQuery
-    ? searchProducts(searchQuery)
+    ? await searchProducts(searchQuery)
     : allProducts;
 
   // Filter products for categorized shelves
@@ -22,43 +26,37 @@ function HomeContent() {
   return (
     <main className="min-h-screen">
       {!searchQuery && <HeroBanner />}
-      <ProductGrid
-        products={products}
-        searchQuery={searchQuery || undefined}
-        audioProducts={audioProducts}
-        peripheralProducts={peripheralProducts}
-      />
+
+      <Suspense fallback={<ProductGridSkeleton />}>
+        <ProductGrid
+          products={products}
+          searchQuery={searchQuery || undefined}
+          audioProducts={audioProducts}
+          peripheralProducts={peripheralProducts}
+        />
+      </Suspense>
     </main>
   );
 }
 
-export default function HomePage() {
+function ProductGridSkeleton() {
   return (
-    <Suspense
-      fallback={
-        <main className="min-h-screen">
-          <HeroBanner />
-          <section className="py-24">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <div className="h-10 w-64 skeleton rounded-lg mb-8" />
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
-                {Array.from({ length: 8 }, (_, i) => (
-                  <div key={i} className="rounded-2xl overflow-hidden">
-                    <div className="aspect-square skeleton" />
-                    <div className="p-5 space-y-3">
-                      <div className="h-3 w-16 skeleton rounded" />
-                      <div className="h-4 w-3/4 skeleton rounded" />
-                      <div className="h-5 w-20 skeleton rounded" />
-                    </div>
-                  </div>
-                ))}
+    <section className="py-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="h-10 w-64 bg-slate-100 animate-pulse rounded-lg mb-8" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+          {Array.from({ length: 8 }, (_, i) => (
+            <div key={i} className="rounded-2xl overflow-hidden">
+              <div className="aspect-square bg-slate-100 animate-pulse" />
+              <div className="p-5 space-y-3">
+                <div className="h-3 w-16 bg-slate-100 animate-pulse rounded" />
+                <div className="h-4 w-3/4 bg-slate-100 animate-pulse rounded" />
+                <div className="h-5 w-20 bg-slate-100 animate-pulse rounded" />
               </div>
             </div>
-          </section>
-        </main>
-      }
-    >
-      <HomeContent />
-    </Suspense>
+          ))}
+        </div>
+      </div>
+    </section>
   );
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useState, useEffect } from "react";
 
 const HERO_SLIDES = [
@@ -48,9 +49,12 @@ export default function HeroBanner() {
                     className={`absolute inset-0 transition-all duration-1000 ease-in-out ${index === currentSlide ? "opacity-100 scale-100" : "opacity-0 scale-105 pointer-events-none"
                         }`}
                 >
-                    <img
+                    <Image
                         src={slide.image}
-                        className="w-full h-full object-cover object-center transform-gpu"
+                        fill
+                        priority={index === 0}
+                        sizes="100vw"
+                        className="object-cover object-center transform-gpu"
                         alt={`Hero Slide ${slide.id}`}
                     />
                 </div>
