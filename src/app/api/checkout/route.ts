@@ -41,6 +41,7 @@ export async function POST(request: Request) {
         });
 
     } catch (error) {
+        console.error("Checkout validation error:", error);
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }

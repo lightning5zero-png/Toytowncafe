@@ -4,7 +4,6 @@ import { useState, useMemo } from "react";
 import type { Product } from "@/types/product";
 import ProductCard from "@/components/ProductCard";
 import FilterSidebar from "@/components/FilterSidebar";
-import Link from "next/link";
 
 import CategoryShelf from "@/components/CategoryShelf";
 import PromoBannerGrid from "@/components/PromoBannerGrid";
@@ -121,7 +120,7 @@ export default function ProductGrid({
                             </div>
                         ) : (
                             <div className="py-20 text-center bg-slate-50 rounded-3xl border border-dashed border-slate-200">
-                                <p className="text-slate-400 font-bold uppercase tracking-widest mb-2">No products found</p>
+                                <p className="text-slate-400 font-bold uppercase  mb-2">No products found</p>
                                 <p className="text-xs text-slate-300">Try adjusting your filters</p>
                             </div>
                         )}

@@ -4,6 +4,7 @@ import type { Product } from "@/types/product";
 /** 
  * Map Prisma Product to Frontend Product type 
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function mapPrismaToProduct(p: any): Product {
     return {
         ...p,

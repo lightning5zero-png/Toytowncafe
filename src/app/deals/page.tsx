@@ -22,11 +22,11 @@ export default async function DealsPage() {
                             สินค้าโปรโมชั่น{" "}
                             <span className="text-blue-600">Deals</span>
                         </h1>
-                        <div className="px-3 py-1 bg-red-500 text-white text-[10px] font-black uppercase tracking-widest rounded-lg animate-pulse">
+                        <div className="px-3 py-1 bg-red-500 text-white text-[10px] font-black uppercase  rounded-lg animate-pulse">
                             Hot Now
                         </div>
                     </div>
-                    <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">
+                    <p className="text-slate-500 font-bold uppercase  text-xs">
                         ดีลพิเศษสุดคุ้มสำหรับคุณเท่านั้น •{" "}
                         <span className="text-slate-900">
                             {dealProducts.length} รายการ
@@ -39,7 +39,7 @@ export default async function DealsPage() {
                     <DealsGrid products={dealProducts} />
                 ) : (
                     <div className="py-32 text-center">
-                        <p className="text-slate-400 font-bold uppercase tracking-widest text-sm">
+                        <p className="text-slate-400 font-bold uppercase  text-sm">
                             ไม่พบสินค้าโปรโมชั่นในขณะนี้
                         </p>
                     </div>

@@ -52,7 +52,7 @@ export default function ProductDetailClient({
         <main className="min-h-screen pt-24 pb-16 bg-slate-50">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 {/* Breadcrumb */}
-                <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest mb-10 overflow-x-auto no-scrollbar whitespace-nowrap">
+                <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-[10px] font-black uppercase  mb-10 overflow-x-auto no-scrollbar whitespace-nowrap">
                     <Link href="/" className="text-slate-400 hover:text-slate-900 transition-colors">Home</Link>
                     <span className="text-slate-200">/</span>
                     <Link href="/products" className="text-slate-400 hover:text-slate-900 transition-colors">Products</Link>
@@ -87,10 +87,10 @@ export default function ProductDetailClient({
                             {/* Discount Badge */}
                             <div className="absolute top-6 left-6 flex flex-col gap-2 z-10">
                                 {discount > 0 && (
-                                    <span className="px-3 py-1 bg-red-500 text-white text-[9px] font-black uppercase tracking-widest rounded shadow-xl">-{discount}% OFF</span>
+                                    <span className="px-3 py-1 bg-red-500 text-white text-[9px] font-black uppercase  rounded shadow-xl">-{discount}% OFF</span>
                                 )}
                                 {product.tags.includes("new") && (
-                                    <span className="px-3 py-1 bg-blue-600 text-white text-[9px] font-black uppercase tracking-widest rounded shadow-xl">New Arrival</span>
+                                    <span className="px-3 py-1 bg-blue-600 text-white text-[9px] font-black uppercase  rounded shadow-xl">New Arrival</span>
                                 )}
                             </div>
 
@@ -169,7 +169,7 @@ export default function ProductDetailClient({
                                         </svg>
                                     ))}
                                 </div>
-                                <span className="text-xs font-bold text-slate-400 uppercase tracking-widest">{product.rating} — {product.reviewCount} Reviews</span>
+                                <span className="text-xs font-bold text-slate-400 uppercase ">{product.rating} — {product.reviewCount} Reviews</span>
                             </div>
                         </header>
 
@@ -183,10 +183,10 @@ export default function ProductDetailClient({
                         <p className="text-slate-500 text-sm font-medium leading-relaxed mb-10 max-w-xl">{product.longDescription}</p>
 
                         <section className="mb-10">
-                            <h3 className="text-[10px] font-black text-slate-400 uppercase tracking-widest mb-4">Masterpiece Features</h3>
+                            <h3 className="text-[10px] font-black text-slate-400 uppercase  mb-4">Masterpiece Features</h3>
                             <div className="flex flex-wrap gap-2">
                                 {product.features.map((f) => (
-                                    <span key={f} className="px-4 py-2 bg-white border border-slate-100 rounded-xl text-[10px] text-slate-600 font-black uppercase tracking-widest shadow-sm">{f}</span>
+                                    <span key={f} className="px-4 py-2 bg-white border border-slate-100 rounded-xl text-[10px] text-slate-600 font-black uppercase  shadow-sm">{f}</span>
                                 ))}
                             </div>
                         </section>
@@ -223,8 +223,8 @@ export default function ProductDetailClient({
                                 { label: "Easy Return", desc: "30 Days Period" }
                             ].map(b => (
                                 <div key={b.label} className="flex flex-col">
-                                    <span className="text-[10px] font-black text-slate-900 uppercase tracking-widest mb-1">{b.label}</span>
-                                    <span className="text-[9px] font-bold text-slate-400 uppercase tracking-widest">{b.desc}</span>
+                                    <span className="text-[10px] font-black text-slate-900 uppercase  mb-1">{b.label}</span>
+                                    <span className="text-[9px] font-bold text-slate-400 uppercase ">{b.desc}</span>
                                 </div>
                             ))}
                         </div>
@@ -235,12 +235,12 @@ export default function ProductDetailClient({
                 {relatedProducts.length > 0 && (
                     <section className="mt-32">
                         <div className="flex items-center gap-4 mb-12">
-                            <h2 className="text-2xl font-black text-slate-900 tracking-tighter">You May Also <span className="text-blue-600">Like</span></h2>
+                            <h2 className="text-2xl font-extrabold text-slate-900">สินค้าที่แนะนำ</h2>
                             <div className="flex-1 h-[1px] bg-slate-100" />
                         </div>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                             {relatedProducts.map((p) => (
-                                <Link key={p.id} href={`/p/${p.slug}`} className="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
+                                <Link key={p.id} href={`/product/${p.slug}`} className="group bg-white border border-slate-100 rounded-3xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-500">
                                     <div className="aspect-square relative overflow-hidden bg-[#F8FAFC]">
                                         {/* Primary Image */}
                                         <Image
@@ -264,9 +264,9 @@ export default function ProductDetailClient({
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                                     </div>
                                     <div className="p-6 border-t border-slate-100">
-                                        <span className="text-[9px] font-black text-blue-600 uppercase tracking-widest block mb-1">{p.category}</span>
-                                        <h3 className="text-sm font-black text-slate-900 mb-1 line-clamp-1 group-hover:text-blue-600 transition-colors">{p.name}</h3>
-                                        <p className="text-lg font-black text-slate-900">฿{(p.price * 35).toLocaleString()}</p>
+                                        <span className="text-xs font-bold text-blue-600 uppercase  block mb-1">{p.category}</span>
+                                        <h3 className="text-sm font-bold text-slate-900 mb-1 line-clamp-1 group-hover:text-blue-600 transition-colors">{p.name}</h3>
+                                        <p className="text-lg font-bold text-slate-900">฿{(p.price * 35).toLocaleString()}</p>
                                     </div>
                                 </Link>
                             ))}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { renderHook, act } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
 import { CartProvider, useCart } from '@/context/CartContext'

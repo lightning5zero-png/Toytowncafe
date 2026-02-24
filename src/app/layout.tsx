@@ -1,15 +1,15 @@
 import type { Metadata } from "next";
-import { Outfit } from "next/font/google";
+import { Prompt } from "next/font/google";
 import { CartProvider } from "@/context/CartContext";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import BlogHighlights from "@/components/BlogHighlights";
 import "./globals.css";
 
-const outfit = Outfit({
-  subsets: ["latin"],
+const prompt = Prompt({
+  subsets: ["latin", "thai"],
   weight: ["300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-outfit",
+  variable: "--font-prompt",
 });
 
 export const metadata: Metadata = {
@@ -61,7 +61,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="th" suppressHydrationWarning>
-      <body className={`${outfit.variable} font-sans antialiased min-h-screen bg-white`}>
+      <body className={`${prompt.variable} font-sans antialiased min-h-screen bg-white`}>
         <CartProvider>
           <Navbar />
           <main>

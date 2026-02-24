@@ -79,11 +79,11 @@ export default function Footer() {
                                 />
                             </svg>
                         </div>
-                        <span className="text-sm font-bold text-white uppercase tracking-widest">
+                        <span className="text-sm font-bold text-white uppercase ">
                             Toytown<span className="text-blue-500">cafe</span>
                         </span>
                     </div>
-                    <p className="text-[10px] text-white/20 font-black uppercase tracking-widest">
+                    <p className="text-[10px] text-white/20 font-black uppercase ">
                         © {currentYear} Toytowncafe. All rights reserved.
                     </p>
                 </div>

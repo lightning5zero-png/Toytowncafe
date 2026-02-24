@@ -28,13 +28,13 @@ export default function LoginPage() {
                         <span className="text-xl font-black tracking-tighter uppercase">Toytown</span>
                     </Link>
                     <h1 className="text-2xl font-black text-slate-900 mb-1">ยินดีต้อนรับ</h1>
-                    <p className="text-slate-400 text-[11px] font-black uppercase tracking-widest">เข้าสู่ระบบเพื่อดำเนินการต่อ</p>
+                    <p className="text-slate-400 text-[11px] font-black uppercase ">เข้าสู่ระบบเพื่อดำเนินการต่อ</p>
                 </div>
 
                 {/* Email/Pass Form */}
                 <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="space-y-2">
-                        <label className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-400 ml-1">อีเมล</label>
+                        <label className="text-sm font-black uppercase text-slate-600 ml-1">อีเมล</label>
                         <input
                             type="email"
                             value={email}
@@ -47,8 +47,8 @@ export default function LoginPage() {
 
                     <div className="space-y-2">
                         <div className="flex justify-between items-center ml-1">
-                            <label className="text-[10px] font-black uppercase tracking-[0.15em] text-slate-400">รหัสผ่าน</label>
-                            <Link href="#" className="text-[10px] font-black uppercase tracking-widest text-blue-600 hover:text-blue-700">ลืมรหัสผ่าน?</Link>
+                            <label className="text-sm font-black uppercase text-slate-600">รหัสผ่าน</label>
+                            <Link href="#" className="text-[10px] font-black uppercase  text-blue-600 hover:text-blue-700">ลืมรหัสผ่าน?</Link>
                         </div>
                         <input
                             type="password"
@@ -62,7 +62,7 @@ export default function LoginPage() {
 
                     <button
                         type="submit"
-                        className="w-full py-5 bg-slate-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-slate-800 transition-all active:scale-95 shadow-xl shadow-slate-100"
+                        className="w-full py-5 bg-slate-900 text-white rounded-2xl text-base font-black uppercase hover:bg-slate-800 transition-all active:scale-95 shadow-xl shadow-slate-100"
                     >
                         เข้าสู่ระบบ
                     </button>
@@ -74,7 +74,7 @@ export default function LoginPage() {
                         <div className="w-full border-t border-slate-100"></div>
                     </div>
                     <div className="relative flex justify-center text-xs uppercase">
-                        <span className="bg-white px-4 text-slate-400 font-bold tracking-widest text-[10px]">หรือเข้าสู่ระบบด้วย</span>
+                        <span className="bg-white px-4 text-slate-400 font-bold  text-[10px]">หรือเข้าสู่ระบบด้วย</span>
                     </div>
                 </div>
 
@@ -118,12 +118,12 @@ export default function LoginPage() {
                 </div>
 
                 <div className="mt-10 text-center">
-                    <p className="text-slate-500 text-[11px] font-black uppercase tracking-widest">
+                    <p className="text-slate-500 text-[11px] font-black uppercase ">
                         ยังไม่ได้เป็นสมาชิก ?{" "}
                         <Link href="#" className="text-blue-600 hover:text-blue-700 ml-1">สมัครสมาชิกเลย</Link>
                     </p>
                 </div>
             </div>
-        </div>
+        </div >
     );
 }

@@ -58,7 +58,7 @@ export default function PromoBannerGrid() {
                         <div className="absolute inset-0 flex flex-col justify-end p-5 lg:p-6 z-10">
                             {/* Badge */}
                             {banner.badge && (
-                                <span className="self-start px-2.5 py-0.5 bg-white/20 backdrop-blur-sm text-white text-[9px] font-black uppercase tracking-widest rounded-full mb-2 border border-white/10">
+                                <span className="self-start px-2.5 py-0.5 bg-white/20 backdrop-blur-sm text-white text-[9px] font-black uppercase  rounded-full mb-2 border border-white/10">
                                     {banner.badge}
                                 </span>
                             )}

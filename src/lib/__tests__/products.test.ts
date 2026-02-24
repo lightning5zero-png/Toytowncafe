@@ -34,7 +34,7 @@ describe('products lib', () => {
             },
         ]
 
-        // @ts-ignore
+        // @ts-expect-error
         prisma.product.findMany.mockResolvedValue(mockDbProducts)
 
         const result = await getAllProducts()
@@ -43,6 +43,6 @@ describe('products lib', () => {
         expect(result[0].name).toBe('DB Product')
         expect(result[0].category).toBe('DB Category')
         expect(Array.isArray(result[0].images)).toBe(true)
-        expect(result[0].images[0]).toBe('img1.jpg')
+        expect(result[0].images![0]).toBe('img1.jpg')
     })
 })

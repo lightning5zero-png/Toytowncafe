@@ -30,8 +30,8 @@ export default function CategoryShelf({ title, products, categorySlug }: Categor
                     <h2 className="text-2xl font-black text-slate-900 tracking-tight">{title}</h2>
                     <div className="flex items-center gap-4">
                         <Link
-                            href={`#full-collection`}
-                            className="px-4 py-1.5 bg-slate-50 text-slate-600 rounded-full text-[11px] font-bold uppercase tracking-wider hover:bg-slate-100 transition-all flex items-center gap-2 border border-slate-100"
+                            href={categorySlug ? `/products?category=${categorySlug}` : "/products"}
+                            className="px-4 py-1.5 bg-slate-50 text-slate-600 rounded-full text-[11px] font-bold uppercase  hover:bg-slate-100 transition-all flex items-center gap-2 border border-slate-100"
                         >
                             ดูทั้งหมด
                             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">

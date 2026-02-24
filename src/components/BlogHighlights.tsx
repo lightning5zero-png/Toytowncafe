@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
 
 const ALL_ARTICLES = [
     {
@@ -59,16 +58,16 @@ export default function BlogHighlights() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
                     <div>
-                        <h2 className="text-3xl font-black text-slate-900 tracking-tighter uppercase mb-2">
+                        <h2 className="text-3xl font-extrabold text-slate-900 uppercase mb-2">
                             บทความที่น่าสนใจ <span className="text-blue-600">Blog</span>
                         </h2>
-                        <p className="text-slate-500 font-bold uppercase tracking-widest text-xs">
+                        <p className="text-slate-500 font-medium text-sm">
                             อัปเดตเทรนด์ รีวิว และสาระความรู้จากพวกเรา
                         </p>
                     </div>
                     <Link
                         href="/articles"
-                        className="text-[11px] font-black uppercase tracking-widest text-blue-600 hover:text-blue-700 flex items-center gap-2 group"
+                        className="text-sm font-bold text-blue-600 hover:text-blue-700 flex items-center gap-2 group"
                     >
                         อ่านบทความทั้งหมด
                         <svg className="w-4 h-4 transition-transform group-hover:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -91,13 +90,13 @@ export default function BlogHighlights() {
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
                                 <div className="absolute top-4 left-4">
-                                    <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md text-slate-900 rounded-full text-[10px] font-black uppercase tracking-widest shadow-sm">
+                                    <span className="px-4 py-1.5 bg-white/90 backdrop-blur-md text-slate-900 rounded-full text-xs font-bold shadow-sm">
                                         {article.category}
                                     </span>
                                 </div>
                             </div>
                             <div className="p-8">
-                                <h3 className="text-lg font-black text-slate-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight line-clamp-2">
+                                <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight line-clamp-2">
                                     {article.title}
                                 </h3>
                                 <p className="text-slate-500 text-sm leading-relaxed mb-6 line-clamp-2 font-medium">
@@ -108,8 +107,8 @@ export default function BlogHighlights() {
                                         {article.author.charAt(0)}
                                     </div>
                                     <div className="flex flex-col leading-none">
-                                        <span className="text-[11px] font-black text-slate-900">{article.author}</span>
-                                        <span className="text-[9px] font-bold text-slate-400 mt-1 uppercase tracking-wider">{article.date}</span>
+                                        <span className="text-sm font-bold text-slate-900">{article.author}</span>
+                                        <span className="text-[10px] font-medium text-slate-400 mt-1">{article.date}</span>
                                     </div>
                                 </div>
                             </div>

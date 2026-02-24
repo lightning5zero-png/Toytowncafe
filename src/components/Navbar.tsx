@@ -64,14 +64,14 @@ export default function Navbar() {
                         <div className="hidden md:flex items-center gap-10">
                             <Link
                                 href="/"
-                                className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
+                                className={`text-sm font-bold uppercase transition-all hover:scale-105 ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/80 hover:text-white"}`}
                             >
                                 Home
                             </Link>
 
                             {/* Categories Dropdown */}
                             <div className="relative group/cat py-4">
-                                <button className={`flex items-center gap-2 text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}>
+                                <button className={`flex items-center gap-2 text-sm font-bold uppercase transition-all hover:scale-105 ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/80 hover:text-white"}`}>
                                     หมวดหมู่
                                     <svg className="w-3 h-3 transition-transform group-hover/cat:rotate-180" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M19 9l-7 7-7-7" />
@@ -94,7 +94,7 @@ export default function Navbar() {
                                                 href={`/products?category=${item.cat}`}
                                                 className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-slate-50 transition-colors group/item"
                                             >
-                                                <span className="text-[11px] font-bold text-slate-600 group-hover/item:text-slate-900 uppercase tracking-widest leading-none mt-0.5">{item.name}</span>
+                                                <span className="text-[11px] font-bold text-slate-600 group-hover/item:text-slate-900 uppercase  leading-none mt-0.5">{item.name}</span>
                                                 <svg className="w-3 h-3 text-slate-300 group-hover/item:text-slate-900 transition-transform group-hover/item:translate-x-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M9 5l7 7-7 7" />
                                                 </svg>
@@ -106,21 +106,21 @@ export default function Navbar() {
 
                             <Link
                                 href="/products"
-                                className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
+                                className={`text-sm font-bold uppercase transition-all hover:scale-105 ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/80 hover:text-white"}`}
                             >
                                 สินค้า
                             </Link>
 
                             <Link
                                 href="/deals"
-                                className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
+                                className={`text-sm font-bold uppercase transition-all hover:scale-105 ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/80 hover:text-white"}`}
                             >
                                 โปรโมชั่น
                             </Link>
 
                             <Link
                                 href="/articles"
-                                className={`text-[11px] font-black uppercase tracking-[0.2em] transition-all hover:scale-105 ${isScrolled ? "text-slate-500 hover:text-slate-900" : "text-white/70 hover:text-white"}`}
+                                className={`text-sm font-bold uppercase transition-all hover:scale-105 ${isScrolled ? "text-slate-600 hover:text-slate-900" : "text-white/80 hover:text-white"}`}
                             >
                                 บทความ
                             </Link>
@@ -134,7 +134,7 @@ export default function Navbar() {
                                     placeholder="ค้นหา..."
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
-                                    className={`pl-5 pr-10 py-2.5 rounded-xl text-[11px] font-bold transition-all outline-none w-32 focus:w-48 border ${isScrolled
+                                    className={`pl-5 pr-10 py-2.5 rounded-xl text-sm font-medium transition-all outline-none w-32 focus:w-48 border ${isScrolled
                                         ? "bg-slate-100 border-transparent focus:bg-white focus:border-slate-200"
                                         : "bg-white/10 border-white/10 text-white placeholder:text-white/40 focus:bg-white/20 focus:border-white/20"
                                         }`}
@@ -149,7 +149,7 @@ export default function Navbar() {
 
                             <Link
                                 href="/login"
-                                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all active:scale-95 text-[11px] font-black uppercase tracking-widest ${isScrolled
+                                className={`flex items-center gap-2 px-4 py-2.5 rounded-xl transition-all active:scale-95 text-sm font-bold uppercase  ${isScrolled
                                     ? "text-slate-600 hover:text-slate-900 hover:bg-slate-100"
                                     : "text-white/80 hover:text-white hover:bg-white/10"
                                     }`}
@@ -162,7 +162,7 @@ export default function Navbar() {
 
                             <button
                                 onClick={toggleCart}
-                                className={`relative px-5 py-2.5 rounded-xl flex items-center gap-3 transition-all active:scale-95 font-black text-[11px] uppercase tracking-widest shadow-xl ${isScrolled
+                                className={`relative px-5 py-2.5 rounded-xl flex items-center gap-3 transition-all active:scale-95 font-bold text-sm uppercase  shadow-xl ${isScrolled
                                     ? "bg-slate-900 text-white hover:bg-slate-800"
                                     : "bg-white text-slate-900 hover:bg-slate-100"
                                     }`}

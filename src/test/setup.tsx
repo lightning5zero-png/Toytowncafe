@@ -4,10 +4,11 @@ import { vi } from 'vitest'
 // Mock next/image since it's hard to test in JSDOM
 vi.mock('next/image', () => ({
     __esModule: true,
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     default: (props: any) => {
         // eslint-disable-next-line @next/next/no-img-element
-        return <img { ...props } fill = { props.fill ? "true" : undefined } />
-  },
+        return <img alt={props.alt || ""} {...props} fill={props.fill ? "true" : undefined} />
+    },
 }))
 
 // Mock next/navigation

@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
 import { useCart } from "@/context/CartContext";
+import { useRouter } from "next/navigation";
 
 interface CartPanelProps {
     isOpen: boolean;
@@ -11,39 +11,11 @@ interface CartPanelProps {
 export default function CartPanel({ isOpen, onClose }: CartPanelProps) {
     const { items, totalItems, totalPrice, removeFromCart, updateQuantity, clearCart } =
         useCart();
-    const [isCheckingOut, setIsCheckingOut] = useState(false);
+    const router = useRouter();
 
-    const handleCheckout = async () => {
-        setIsCheckingOut(true);
-        try {
-            // Prepare only IDs and Quantities (Don't send prices from client!)
-            const checkoutData = {
-                items: items.map(item => ({
-                    id: item.product.id,
-                    quantity: item.quantity
-                }))
-            };
-
-            const response = await fetch("/api/checkout", {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify(checkoutData)
-            });
-
-            const result = await response.json();
-
-            if (result.success) {
-                alert(`Backend Validated!\nTotal: ฿${(result.totalAmount * 35).toLocaleString()}\n\nระบบคำนวณราคาจากหลังบ้านเรียบร้อยแล้ว ปลอดภัย 100%`);
-                // Next step: redirect to payment
-            } else {
-                alert("Checkout failed: " + (result.error || "Unknown error"));
-            }
-        } catch (error) {
-            console.error("Checkout error:", error);
-            alert("Error connecting to backend");
-        } finally {
-            setIsCheckingOut(false);
-        }
+    const handleCheckout = () => {
+        onClose();
+        router.push("/checkout");
     };
 
     return (
@@ -203,18 +175,10 @@ export default function CartPanel({ isOpen, onClose }: CartPanelProps) {
                         </div>
                         <button
                             id="checkout-button"
-                            disabled={isCheckingOut}
                             onClick={handleCheckout}
-                            className={`w-full py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-semibold rounded-xl shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 transition-all duration-200 flex items-center justify-center gap-2 ${isCheckingOut ? "opacity-70 cursor-not-allowed" : ""}`}
+                            className="w-full py-3 bg-gradient-to-r from-violet-600 to-fuchsia-600 hover:from-violet-500 hover:to-fuchsia-500 text-white font-semibold rounded-xl shadow-lg shadow-violet-500/25 hover:shadow-violet-500/40 transition-all duration-200 flex items-center justify-center gap-2"
                         >
-                            {isCheckingOut ? (
-                                <>
-                                    <div className="w-4 h-4 border-2 border-white/20 border-t-white rounded-full animate-spin" />
-                                    Processing...
-                                </>
-                            ) : (
-                                "Checkout"
-                            )}
+                            ดำเนินการสั่งซื้อ
                         </button>
                         <button
                             onClick={clearCart}

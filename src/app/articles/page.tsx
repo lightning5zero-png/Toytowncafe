@@ -18,10 +18,10 @@ export default function ArticlesPage() {
                             <div className="aspect-[16/10] bg-slate-100 rounded-[32px] mb-6 overflow-hidden relative border border-slate-50">
                                 <div className="absolute inset-0 bg-gradient-to-br from-slate-200 to-slate-100 animate-pulse" />
                                 <div className="absolute inset-0 flex items-center justify-center">
-                                    <span className="text-slate-400 font-black uppercase tracking-widest text-xs">ภาพประกอบบทความ</span>
+                                    <span className="text-slate-400 font-black uppercase  text-xs">ภาพประกอบบทความ</span>
                                 </div>
                             </div>
-                            <span className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[10px] font-black uppercase tracking-widest mb-4">
+                            <span className="inline-block px-4 py-1.5 bg-blue-50 text-blue-600 rounded-full text-[10px] font-black uppercase  mb-4">
                                 รีวิวสินค้า
                             </span>
                             <h2 className="text-xl font-black text-slate-900 mb-3 group-hover:text-blue-600 transition-colors leading-tight">

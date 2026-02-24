@@ -22,15 +22,17 @@ export default function FilterSidebar({ products, onFilterChange, className = ""
     // Dynamic Data Extraction
     const categories = Array.from(new Set(products.map((p) => p.category))).sort();
     const brands = Array.from(new Set(products.map((p) => p.brand))).filter(Boolean).sort();
-    const minPrice = Math.min(...products.map((p) => p.price * 35));
-    const maxPrice = Math.max(...products.map((p) => p.price * 35));
+    const maxPrice = products.length > 0 ? Math.max(...products.map((p) => p.price * 35)) : 100000;
 
     useEffect(() => {
         // Initialize price range based on actual data once
         if (products.length > 0) {
-            setPriceRange([0, Math.ceil(maxPrice)]);
+            // Use setTimeout to avoid synchronous state update in effect warning
+            setTimeout(() => {
+                setPriceRange(prev => prev[1] === 100000 ? [0, Math.ceil(maxPrice)] : prev);
+            }, 0);
         }
-    }, [products]); // Run only when products change (initial load)
+    }, [products, maxPrice]);
 
     // Notify parent of changes
     useEffect(() => {
@@ -39,7 +41,8 @@ export default function FilterSidebar({ products, onFilterChange, className = ""
             brands: selectedBrands,
             priceRange,
         });
-    }, [selectedCategories, selectedBrands, priceRange.join(",")]); // Join array to detect value changes
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selectedCategories, selectedBrands, priceRange[0], priceRange[1]]);
 
     const toggleCategory = (category: string) => {
         setSelectedCategories((prev) =>
@@ -78,7 +81,7 @@ export default function FilterSidebar({ products, onFilterChange, className = ""
                 <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
                 </svg>
-                <span className="font-bold text-xs uppercase tracking-widest">Filter</span>
+                <span className="font-bold text-xs uppercase ">Filter</span>
             </button>
 
             {/* Backdrop for Mobile */}
@@ -107,11 +110,11 @@ export default function FilterSidebar({ products, onFilterChange, className = ""
 
                     {/* Reset Button */}
                     <div className="mb-8 flex items-center justify-between">
-                        <span className="text-xs font-black uppercase tracking-widest text-slate-400">Refine By</span>
+                        <span className="text-xs font-black uppercase  text-slate-400">Refine By</span>
                         {(selectedCategories.length > 0 || selectedBrands.length > 0 || priceRange[0] > 0 || priceRange[1] < maxPrice) && (
                             <button
                                 onClick={resetFilters}
-                                className="text-[10px] font-bold text-blue-600 hover:text-blue-800 uppercase tracking-widest"
+                                className="text-[10px] font-bold text-blue-600 hover:text-blue-800 uppercase "
                             >
                                 Reset All
                             </button>
